@@ -491,3 +491,74 @@ Unresolved / next-phase opportunities:
 - Add customer photos upload to reviews (currently text only)
 - Add Q&A voting (helpful/unhelpful on questions)
 - Consider expanding the compatibility matrix with more ingredient pairs
+
+---
+Task ID: round-7 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-6 complete)
+- QA pass via agent-browser:
+  - Compatibility checker tested with 3 paths:
+    - Compatible: cleanser + SPF → "Layer freely"
+    - Caution: (vitamin-c + niacinamide path)
+    - Separate: C15 + Retinal → "Separate steps" with reason
+  - Q&A submission end-to-end: ask question → appears in list → persists
+    on reload with "Pending" badge
+  - Account page 6 tabs all work with 0 errors
+  - Mobile (390x844) compatibility: 9/10, account: 9/10
+  - All 8 PDPs have Q&A section + Ask button
+  - Lint: clean
+
+No bugs found this round — all features from rounds 1-6 are stable.
+
+Features added:
+- Q&A voting: helpful/not-helpful buttons on expanded Q&A answers. One
+  vote per question per browser (disabled after voting via voted state).
+  Vote count persists to localStorage. Toast feedback on vote ("Marked as
+  helpful" / "Marked as not helpful"). Updated seed data to include
+  helpful/notHelpful counts (14/0, 9/1, 22/0). Verified: clicked Helpful
+  on "Can I layer this under retinal" → count went 14→15, persisted across
+  reload. ThumbsUp/ThumbsDown icons with fill-current when voted.
+- Saved routines: Zustand saved-routines-store with persist (localStorage).
+  Build-routine page now has "Save routine to account" button (disabled
+  when no products selected). Saved routines appear in sidebar with name +
+  product count + total + load/remove buttons. Account page has new
+  "Saved routines" tab (between Profile and Wishlist) showing saved routines
+  as cards with name + date + product count + total + product thumbnails +
+  Open in builder + Remove buttons. Profile tab stat card now shows Saved
+  routines count instead of Recently viewed.
+
+Verification (VLM-rated):
+- Q&A voting: confirmed Helpful (14) → (15) on click, persisted on reload
+- Saved routines: confirmed "Routine Sep 27" saved to localStorage, appears
+  in build-routine sidebar + account Saved routines tab
+- Account Saved routines tab: 9/10 (VLM-rated) — cards with name, date,
+  product thumbnails, total, savings, Open in builder + Remove buttons
+- Compatibility checker: all 3 verdicts work (compatible/caution/separate)
+- Mobile compatibility: 9/10, account: 9/10
+- 0 console errors / 0 a11y warnings
+- Lint: clean (0 errors, 0 warnings)
+- All 22 deployed routes return 200 OK
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (13 commits on main now)
+- New stores: src/lib/commerce/saved-routines-store.ts
+- New analytics events: qa_vote, routine_save
+- Account page now has 7 tabs (added Saved routines between Profile and Wishlist)
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Add customer photos upload to reviews (currently text only)
+- Add ingredient compatibility checker for 3+ products (currently 2 only)
+- Consider A/B test scaffolding for CTA copy variants
+- Add product video for hero (currently parallax image only)
+- Consider adding a "find my shade/texture" interactive recommender
+- Add review moderation (currently all submitted reviews visible immediately)
+- Expand Q&A voting to allow changing vote (currently one-way)
+- Add routine sharing via URL (encode saved routine in URL for sharing)
+- Consider adding a "routine score" that rates how well products layer
