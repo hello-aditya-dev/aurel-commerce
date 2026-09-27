@@ -22,7 +22,9 @@ export type CommerceEvent =
   | "share_cart"
   | "review_submit"
   | "wishlist_share"
-  | "routine_export_pdf";
+  | "routine_export_pdf"
+  | "qa_submit"
+  | "compatibility_check";
 
 interface AnalyticsPayload {
   [key: string]: unknown;

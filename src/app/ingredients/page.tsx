@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllIngredients, getProductsForIngredient } from "@/lib/commerce/provider";
 import { Reveal } from "@/components/motion/reveal";
+import { CompatibilityChecker } from "@/components/product/compatibility-checker";
 
 export const metadata: Metadata = {
   title: "Ingredients",
@@ -63,6 +64,8 @@ export default function IngredientsPage() {
           ))}
         </div>
       </div>
+
+      <CompatibilityChecker />
     </>
   );
 }

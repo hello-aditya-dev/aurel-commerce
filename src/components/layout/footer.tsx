@@ -18,6 +18,7 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Our approach", href: "/approach" },
       { label: "Ingredients", href: "/ingredients" },
+      { label: "Compatibility check", href: "/compatibility" },
       { label: "Journal", href: "/journal" },
       { label: "Skin diagnostic", href: "/diagnostic" },
       { label: "Build a routine", href: "/build-routine" },

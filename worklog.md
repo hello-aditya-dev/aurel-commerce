@@ -397,3 +397,97 @@ Unresolved / next-phase opportunities:
 - Consider adding review moderation (currently all submitted reviews visible immediately)
 - Add product question/answer section (Q&A) on PDP
 - Add ingredient compatibility checker (select 2 products → see if they layer)
+
+---
+Task ID: round-6 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-5 complete)
+- QA pass via agent-browser:
+  - Homepage scroll: 0 console errors
+  - All 8 PDPs return 200 OK with Write a review button present
+  - Review submission end-to-end: fill form → submit → dialog closes →
+    review appears in list → persists across reload (verified "QA Tester"
+    + "Excellent barrier support" in DOM after page reload)
+  - Mobile write-review dialog (390px): 9/10
+  - Wishlist share URL ingestion: 3 products imported correctly via
+    ?wishlist=slug1,slug2,slug3
+  - Print stylesheet: 6 print rules loaded
+  - All major routes return 200 OK
+  - Lint: clean
+
+No bugs found this round — all features from rounds 1-5 are stable.
+
+Features added:
+- Product Q&A section on PDP: Zustand product-qa-store with seed data
+  (2 demo questions for peptide-recovery-serum, 1 for retinal-renewal-0-1).
+  ProductQASection component with expandable Q&A items (AnimatePresence
+  height animation), "Ask a question" button opens AskQuestionDialog modal
+  with question textarea (300 char count) + name input + validation +
+  Submit/Cancel. User-submitted questions show "Pending" badge (no answer).
+  Answered questions expand to show AUREL team response with border-l-2
+  indentation. Persists to localStorage. Added between ReviewsSection and
+  FAQ on all 8 PDPs.
+- Ingredient compatibility checker: dedicated /compatibility page + section
+  on /ingredients page. Two-product selector with image cards + "Select
+  product" picker dropdown, center Check button, result display with 3
+  verdicts (compatible / caution / "Separate steps"). Cross-references
+  key actives via INCOMPATIBLE_PAIRS matrix:
+  - vitamin-c + retinal → "Separate steps" (destabilise + irritate)
+  - vitamin-c + niacinamide → "Layer with care" (soft caution, flushing risk)
+  Educational footer disclaimer. Tracks compatibility_check analytics event.
+  Verified on deployed site: C15 + Retinal correctly returns "Separate steps"
+  with reason "Use vitamin C in the AM and retinal in the PM..."
+- Account page UI expansion: full tabbed interface with sidebar
+  (Profile / Wishlist / Reviews / Recently viewed / Orders / Settings).
+  Profile tab shows 4 stat cards (cart items, wishlist, reviews written,
+  recently viewed) + sign-in form. Wishlist tab lists saved products with
+  thumbnails. Reviews tab lists all user-submitted reviews across products
+  with star rating + title + body + date. Recently viewed tab shows grid.
+  Orders tab shows empty state with Shopify backend note. Settings tab
+  shows demo preferences (email notifications toggle, subscription cadence,
+  currency) with disabled controls.
+
+Style polish:
+- Q&A items use border-l-2 ml-3 for answer indentation
+- Compatibility result display uses color-coded icons (Check/AlertCircle/X)
+  with matching bg/border tints
+- Account sidebar highlights active tab with bg-foreground text-background
+
+Verification (VLM-rated):
+- Compatibility page (local): 9/10
+- Compatibility check C15 + Retinal (local): "Separate steps" verdict
+  with correct reason text confirmed
+- Compatibility check on deployed site: "Separate steps" verdict with
+  correct reason confirmed via DOM
+- Account page: 9/10 (sidebar tabs + stat cards + sign-in form)
+- Q&A section on PDP: seeded questions visible in DOM
+- Ask-a-question dialog: 10/10
+- Mobile write-review dialog: 9/10
+- All pages: 0 console errors, 0 a11y warnings
+- Lint: clean (0 errors, 0 warnings)
+- All 22 deployed routes return 200 OK (including new /compatibility/)
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (11 commits on main now)
+- New routes: /compatibility (in footer + sitemap)
+- New stores: src/lib/commerce/product-qa-store.ts (with seed data)
+- New components: product-qa-section, compatibility-checker
+- New analytics events: qa_submit, compatibility_check
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Add account-level saved routines (when auth backend exists)
+- Add review moderation (currently all submitted reviews visible immediately)
+- Consider A/B test scaffolding for CTA copy variants
+- Add ingredient compatibility checker for 3+ products (currently 2 only)
+- Add product video for hero (currently parallax image only)
+- Consider adding a "find my shade/texture" interactive recommender
+- Add customer photos upload to reviews (currently text only)
+- Add Q&A voting (helpful/unhelpful on questions)
+- Consider expanding the compatibility matrix with more ingredient pairs

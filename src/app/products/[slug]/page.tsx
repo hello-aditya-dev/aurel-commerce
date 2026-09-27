@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Check, Truck, RefreshCw, ShieldCheck, Leaf, Beaker, Droplets } from "lucide-react";
 import { CompleteRoutine } from "@/components/product/complete-routine";
 import { ReviewsSection } from "@/components/product/reviews-section";
+import { ProductQASection } from "@/components/product/product-qa-section";
 import { WishlistButton } from "@/components/commerce/wishlist-button";
 import { RecordProductView } from "@/components/product/record-product-view";
 import { RecentlyViewedRail } from "@/components/product/recently-viewed-rail";
@@ -216,6 +217,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         )}
 
         <ReviewsSection product={product} />
+
+        <ProductQASection product={product} />
 
         <section className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
           <div className="md:col-span-4">
