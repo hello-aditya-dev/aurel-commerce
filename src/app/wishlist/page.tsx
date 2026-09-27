@@ -1,0 +1,82 @@
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { useWishlist } from "@/lib/commerce/wishlist-store";
+import { getProductsBySlugs } from "@/lib/commerce/provider";
+import { ProductCard } from "@/components/commerce/product-card";
+import { Heart, ArrowRight } from "lucide-react";
+
+export default function WishlistPage() {
+  const hasHydrated = useWishlist((s) => s.hasHydrated);
+  const slugs = useWishlist((s) => s.slugs);
+  const clear = useWishlist((s) => s.clear);
+
+  const products = hasHydrated ? getProductsBySlugs(slugs) : [];
+
+  return (
+    <>
+      <section className="border-b border-border">
+        <div className="container-aurel py-14 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-7">
+              <p className="text-eyebrow text-muted-foreground mb-5">Saved</p>
+              <h1
+                className="font-serif font-light leading-[1] tracking-[-0.025em]"
+                style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
+              >
+                Your wishlist.
+              </h1>
+            </div>
+            <div className="md:col-span-5 md:col-start-8 md:pt-3 flex flex-col md:items-end justify-end">
+              <p className="text-sm text-muted-foreground">
+                {hasHydrated ? (
+                  <>
+                    {products.length} {products.length === 1 ? "product" : "products"} saved
+                  </>
+                ) : (
+                  <>Loading…</>
+                )}
+              </p>
+              {products.length > 0 && (
+                <button
+                  onClick={clear}
+                  className="mt-3 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors link-underline"
+                >
+                  Clear wishlist
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container-aurel py-12 md:py-20">
+        {hasHydrated && products.length === 0 ? (
+          <div className="text-center py-24 max-w-md mx-auto">
+            <div className="h-14 w-14 rounded-full border border-border flex items-center justify-center mx-auto mb-6">
+              <Heart className="h-5 w-5 text-muted-foreground" />
+            </div>
+            <p className="font-serif text-3xl mb-3">Nothing saved yet.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+              Tap the heart icon on any product to save it here. Your wishlist syncs across this browser.
+            </p>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 h-12 px-7 bg-foreground text-background text-xs uppercase tracking-[0.16em] hover:bg-foreground/90 transition-colors"
+            >
+              Browse the catalogue
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-6 md:gap-y-12">
+            {products.map((p, i) => (
+              <ProductCard key={p.id} product={p} index={i} priority={i < 4} />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}

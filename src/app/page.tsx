@@ -9,12 +9,14 @@ import { ResultsSection } from "@/components/home/results";
 import { BundleSection } from "@/components/home/bundle";
 import { SocialProofSection } from "@/components/home/social-proof";
 import { JournalSection } from "@/components/home/journal";
+import { RecentlyViewedRail } from "@/components/product/recently-viewed-rail";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <BestsellersSection />
+      <RecentlyViewedRail title="Recently viewed" />
       <BrandStatementSection />
       <DiagnosticIntroSection />
       <IngredientStorySection />

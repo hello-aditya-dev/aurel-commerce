@@ -17,6 +17,7 @@ const PRIMARY = [
 ];
 
 const SECONDARY = [
+  { label: "Wishlist", href: "/wishlist" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
   { label: "Case study", href: "/case-study" },

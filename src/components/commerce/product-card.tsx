@@ -10,6 +10,7 @@ import { useCart } from "@/lib/commerce/cart-store";
 import { formatPrice } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { WishlistButton } from "@/components/commerce/wishlist-button";
 
 export function ProductCard({
   product,
@@ -74,6 +75,11 @@ export function ProductCard({
             )}
           </div>
         )}
+
+        {/* Wishlist heart (top right, desktop hover + always visible on mobile) */}
+        <div className="absolute top-2.5 right-2.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          <WishlistButton slug={product.slug} variant="icon" />
+        </div>
 
         {/* Quick add (desktop hover) */}
         <div className="hidden md:block absolute bottom-3 left-3 right-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">

@@ -42,8 +42,10 @@ export function ProductGallery({
             key={i}
             onClick={() => setActive(i)}
             className={cn(
-              "relative aspect-square overflow-hidden bg-muted border transition-colors",
-              active === i ? "border-foreground" : "border-transparent hover:border-border"
+              "relative aspect-square overflow-hidden bg-muted border transition-all duration-300 group/thumb",
+              active === i
+                ? "border-foreground"
+                : "border-transparent hover:border-foreground/40"
             )}
             aria-label={`View image ${i + 1}`}
           >
@@ -52,8 +54,14 @@ export function ProductGallery({
               alt={m.alt}
               fill
               sizes="80px"
-              className="object-cover"
+              className={cn(
+                "object-cover transition-transform duration-500",
+                active === i ? "scale-100" : "scale-95 group-hover/thumb:scale-100"
+              )}
             />
+            {active === i && (
+              <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-foreground" />
+            )}
           </button>
         ))}
       </div>

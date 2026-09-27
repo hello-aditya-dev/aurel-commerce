@@ -4,9 +4,10 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
 import { Wordmark } from "./wordmark";
 import { useCart } from "@/lib/commerce/cart-store";
+import { useWishlist } from "@/lib/commerce/wishlist-store";
 import { cn } from "@/lib/utils";
 import { collections, getAllProducts } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
@@ -35,6 +36,9 @@ export function Header() {
   const openCart = useCart((s) => s.open);
   const count = useCart((s) => s.count());
   const hasHydrated = useCart((s) => s.hasHydrated);
+  const wishSlugs = useWishlist((s) => s.slugs);
+  const wishHydrated = useWishlist((s) => s.hasHydrated);
+  const wishCount = wishHydrated ? wishSlugs.length : 0;
   const pathname = usePathname();
 
   React.useEffect(() => {
@@ -126,6 +130,18 @@ export function Header() {
               className="hidden sm:block p-2 hover:text-foreground text-muted-foreground transition-colors"
             >
               <User className="h-[1.15rem] w-[1.15rem]" />
+            </Link>
+            <Link
+              href="/wishlist"
+              aria-label={`Wishlist, ${wishCount} saved`}
+              className="relative hidden sm:block p-2 hover:text-foreground text-muted-foreground transition-colors"
+            >
+              <Heart className="h-[1.15rem] w-[1.15rem]" />
+              {wishHydrated && wishCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[1.05rem] h-[1.05rem] px-1 rounded-full bg-foreground text-background text-[0.625rem] font-mono leading-[1.05rem] text-center font-medium">
+                  {wishCount}
+                </span>
+              )}
             </Link>
             <button
               onClick={() => {

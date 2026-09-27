@@ -12,6 +12,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Check, Truck, RefreshCw, ShieldCheck, Leaf, Beaker, Droplets } from "lucide-react";
 import { CompleteRoutine } from "@/components/product/complete-routine";
 import { ReviewsSection } from "@/components/product/reviews-section";
+import { WishlistButton } from "@/components/commerce/wishlist-button";
+import { RecordProductView } from "@/components/product/record-product-view";
+import { RecentlyViewedRail } from "@/components/product/recently-viewed-rail";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -54,11 +57,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       <div className="container-aurel py-8 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 md:items-start">
           <div id="purchase-anchor">
             <ProductGallery media={product.media} name={product.name} />
           </div>
-          <div className="md:pt-4">
+          <div className="md:pt-4 md:sticky md:top-32 md:self-start md:max-h-[calc(100vh-9rem)] md:overflow-y-auto md:scroll-aurel md:pr-2 md:-mr-2">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="font-mono text-xs text-muted-foreground uppercase tracking-[0.14em]">
@@ -80,6 +83,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
 
             <AddToCartBridge product={product} />
+            <div className="mt-4 flex items-center justify-end">
+              <WishlistButton slug={product.slug} variant="pill" />
+            </div>
           </div>
         </div>
 
@@ -254,6 +260,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         name={product.name}
         price={product.price}
       />
+
+      <RecordProductView slug={product.slug} />
+
+      <RecentlyViewedRail excludeSlug={product.slug} />
     </>
   );
 }

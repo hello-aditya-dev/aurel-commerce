@@ -20,6 +20,7 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Ingredients", href: "/ingredients" },
       { label: "Journal", href: "/journal" },
       { label: "Skin diagnostic", href: "/diagnostic" },
+      { label: "Wishlist", href: "/wishlist" },
       { label: "Case study", href: "/case-study" },
     ],
   },

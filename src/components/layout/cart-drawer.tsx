@@ -12,9 +12,10 @@ import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 export function CartDrawer() {
-  const { isOpen, close, lines, remove, updateQty, subtotal, count } = useCart();
+  const { isOpen, close, lines, remove, updateQty, subtotal } = useCart();
   const hasHydrated = useCart((s) => s.hasHydrated);
   const sub = subtotal();
+  const count = lines.reduce((sum, l) => sum + l.quantity, 0);
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - sub);
   const progress = Math.min(100, (sub / FREE_SHIPPING_THRESHOLD) * 100);
 

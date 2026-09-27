@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal, RevealText, StaggerGroup } from "@/components/motion/reveal";
 import { CaseStudyCtaButton } from "@/components/case-study/cta-button";
+import { img } from "@/lib/img";
 
 /**
  * AUREL — Case Study page (for prospective clients, not consumers).
@@ -105,29 +106,30 @@ const STACK: { k: string; v: string }[] = [
   { k: "media", v: "Responsive image pipeline" },
 ];
 
-const HIGHLIGHTS: { label: string; caption: string }[] = [
+const HIGHLIGHTS: { label: string; caption: string; image: string }[] = [
   {
     label: "Homepage",
+    image: "/images/case-home.png",
     caption: "Thirteen editorial sections — brand, diagnostic, social proof, bundles.",
   },
   {
     label: "Product Detail",
+    image: "/images/case-pdp.png",
     caption: "Gallery, purchase panel, routine completion, reviews, sticky mobile buy.",
   },
   {
     label: "Diagnostic",
+    image: "/images/case-quiz.png",
     caption: "Five-step quiz leading to a personalised routine with explainable rationale.",
   },
   {
     label: "Cart",
+    image: "/images/case-cart.png",
     caption: "Drawer with upsells, free-shipping threshold, bundle-aware line items.",
   },
   {
-    label: "Mobile",
-    caption: "Touch-first commerce with sticky purchase bar and dedicated mobile nav.",
-  },
-  {
     label: "Collection",
+    image: "/images/case-collection.png",
     caption: "Filters, sort and grid system built to scale across the catalog.",
   },
 ];
@@ -371,24 +373,20 @@ export default function CaseStudyPage() {
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {HIGHLIGHTS.map((h) => (
               <Reveal key={h.label} as="div">
-                <figure>
-                  <div className="relative aspect-video w-full overflow-hidden bg-muted">
-                    {/* Subtle editorial grid overlay to suggest a screen */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 opacity-[0.08]"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(to right, var(--foreground) 1px, transparent 1px), linear-gradient(to bottom, var(--foreground) 1px, transparent 1px)",
-                        backgroundSize: "32px 32px",
-                      }}
+                <figure className="group">
+                  <div className="relative aspect-video w-full overflow-hidden bg-muted border border-border">
+                    <img
+                      src={img(h.image)}
+                      alt={`AUREL ${h.label} screenshot`}
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/45 via-transparent to-transparent" />
                     <div className="absolute inset-0 flex items-end p-5 md:p-6">
-                      <span className="font-serif text-2xl md:text-3xl font-light text-foreground/80 leading-tight">
+                      <span className="font-serif text-2xl md:text-3xl font-light text-background leading-tight">
                         {h.label}
                       </span>
                     </div>
-                    <span className="absolute top-4 right-4 text-mono text-muted-foreground/70">
+                    <span className="absolute top-4 right-4 text-mono text-background/70">
                       /{h.label.toLowerCase().split(" ")[0]}
                     </span>
                   </div>
