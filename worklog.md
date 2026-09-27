@@ -98,3 +98,58 @@ Unresolved / next-phase opportunities:
 - Add product video assets to PDP galleries (currently image-only)
 - Consider adding the product/bundle pages for "Complete Barrier System" product page (currently treated as system page)
 - Performance: implement image AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+
+---
+Task ID: round-2 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md and assessed current project status
+- QA pass via agent-browser across homepage, PDP, quiz, cart, search, journal, case-study, mobile viewport (390x844)
+- Bug found: cart drawer count showing empty parens — `count` was destructured as a function reference from useCart() and rendered directly as a React child. Fixed by computing count from `lines.reduce((sum, l) => sum + l.quantity, 0)` in the CartDrawer component.
+- Mobile QA at 390x844: homepage 8/10, PDP 8/10, mobile nav 9/10, search overlay 9/10, journal article 9/10. Used `agent-browser set viewport 390 844` (top-level viewport command doesn't exist; correct command is `set viewport`).
+- No console errors / hydration errors captured during scroll on homepage or PDP.
+
+Features added:
+- Wishlist system: Zustand store with persist (localStorage), heart icon on ProductCard (top-right, desktop hover reveal + always visible on mobile), Save pill on PDP, dedicated /wishlist page with editorial empty state and CTA, header count badge with red dot, link in mobile nav + footer
+- Recently-viewed: Zustand store (capped at 8 slugs), RecordProductView component mounted on PDP that pushes the slug into the store on mount, RecentlyViewedRail component on homepage (between bestsellers and brand statement) and at the bottom of every PDP (excludes current product)
+- 3 new journal articles added to src/data/catalog.ts (total now 6):
+  - 'The science of ceramides' (Actives, 7 min) — covers 3:1:1 ratio rationale
+  - 'Vitamin C in the morning, retinal at night' (Actives, 6 min) — AM/PM active separation
+  - 'Ectoin and the science of skin stress' (Education, 8 min) — extremolyte mechanism
+- Case-study page now shows real screenshots of the live site (homepage, PDP, quiz, cart, collection) replacing the previous placeholder plates. Screenshots captured via agent-browser at 1440x900 viewport.
+
+Style polish:
+- Sticky desktop purchase panel on PDP — the right column (purchase panel + Add to Bag) is now `md:sticky md:top-32` so the CTA stays visible as the user scrolls through the gallery
+- PDP gallery thumbnails: hover scale 95→100 with smooth transition, active thumbnail gets a 2px left-edge accent bar, border transitions to foreground/40 on hover
+- Wishlist heart on ProductCard top-right (desktop hover, mobile always visible)
+
+Verification:
+- Wishlist flow end-to-end (click Save → header badge count → /wishlist page shows product): 9/10
+- Journal index with 6 articles: clean 3-column grid with 5 articles below featured
+- Case-study with real screenshots: 8/10
+- PDP sticky panel (desktop): 9/10
+- Mobile PDP with wishlist heart: 8/10
+- All pages: 0 console errors, 0 hydration errors
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (3 commits on main now)
+- New routes: /wishlist (with empty + populated states)
+- New stores: src/lib/commerce/wishlist-store.ts, src/lib/commerce/recently-viewed-store.ts
+- Catalog: 6 journal articles (was 3), 8 products, 4 bundles, 4 collections, 8 ingredients
+- All deployed + verified via VLM (8-10/10 across all surfaces)
+- Lint: clean (0 errors, 0 warnings)
+
+Unresolved / next-phase opportunities:
+- Add product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Add bundle builder (interactive routine builder where user picks products → auto-saves as bundle)
+- Consider "Compare products" feature for the catalogue
+- Wire Shopify Storefront API provider when credentials available
+- Add a sticky "back to top" affordance on long PDPs
+- Consider adding more interactive ingredient visualizations (e.g., clickable 3D molecule view)
+- Build out account UI (sign-in form is concept-only)
+- Add toast feedback when adding to wishlist
+- The PDP sticky panel might benefit from a max-height limit when the panel content is very long (currently uses max-h-[calc(100vh-9rem)] + overflow-y-auto which should handle it but worth QA on smaller laptop screens)
