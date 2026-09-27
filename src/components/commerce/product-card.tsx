@@ -11,6 +11,7 @@ import { formatPrice } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { WishlistButton } from "@/components/commerce/wishlist-button";
+import { CompareButton } from "@/components/commerce/compare-button";
 
 export function ProductCard({
   product,
@@ -76,9 +77,10 @@ export function ProductCard({
           </div>
         )}
 
-        {/* Wishlist heart (top right, desktop hover + always visible on mobile) */}
-        <div className="absolute top-2.5 right-2.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+        {/* Wishlist + Compare heart (top right, desktop hover + always visible on mobile) */}
+        <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <WishlistButton slug={product.slug} variant="icon" />
+          <CompareButton slug={product.slug} variant="icon" />
         </div>
 
         {/* Quick add (desktop hover) */}

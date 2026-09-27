@@ -6,6 +6,9 @@ import { Footer } from "./footer";
 import { CartDrawer } from "./cart-drawer";
 import { SearchOverlay } from "./search-overlay";
 import { MobileNav } from "./mobile-nav";
+import { CompareBar } from "@/components/commerce/compare-bar";
+import { BackToTop } from "@/components/layout/back-to-top";
+import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { useCart } from "@/lib/commerce/cart-store";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
@@ -29,12 +32,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <ScrollProgress />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
       <CartDrawer />
       <SearchOverlay />
       <MobileNav />
+      <CompareBar />
+      <BackToTop />
     </div>
   );
 }

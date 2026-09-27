@@ -13,7 +13,9 @@ export function FilmSection() {
     offset: ["start end", "end start"],
   });
   const scale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
+  const x = useTransform(scrollYProgress, [0, 1], ["-2%", "2%"]);
   const yText = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.7]);
 
   return (
     <section
@@ -21,7 +23,7 @@ export function FilmSection() {
       className="relative w-full h-[80vh] md:h-[100vh] overflow-hidden bg-foreground"
     >
       <motion.div
-        style={reduce ? {} : { scale }}
+        style={reduce ? {} : { scale, x }}
         className="absolute inset-0"
       >
         <Image
@@ -34,6 +36,14 @@ export function FilmSection() {
         />
       </motion.div>
       <div className="absolute inset-0 bg-foreground/35" />
+
+      {/* Editorial corner marks — film framing */}
+      <motion.div style={{ opacity }} className="absolute top-6 left-6 text-background/60 font-mono text-[0.6875rem] uppercase tracking-[0.14em]">
+        AR · 01 · Film
+      </motion.div>
+      <motion.div style={{ opacity }} className="absolute top-6 right-6 text-background/60 font-mono text-[0.6875rem] uppercase tracking-[0.14em]">
+        00:00:14:08
+      </motion.div>
 
       <motion.div
         style={reduce ? {} : { y: yText }}
@@ -53,6 +63,13 @@ export function FilmSection() {
           engineered to layer, not to fight itself.
         </p>
       </motion.div>
+
+      {/* Bottom metadata strip — film slate */}
+      <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-background/60 font-mono text-[0.6875rem] uppercase tracking-[0.14em]">
+        <span>SCENE 01 · TAKE 04</span>
+        <span className="hidden md:block">AUREL × ATELIER</span>
+        <span>F · 5.6 · 1/125</span>
+      </div>
 
       {/* Subtle film grain */}
       <div className="absolute inset-0 pointer-events-none grain opacity-30" />

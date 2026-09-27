@@ -22,6 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/account",
     "/search",
     "/systems",
+    "/wishlist",
+    "/compare",
+    "/build-routine",
   ].map((p) => ({ url: `${base}${p}`, lastModified: now, changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.7 }));
 
   const productPages = products.map((p) => ({

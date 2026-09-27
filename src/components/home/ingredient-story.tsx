@@ -83,7 +83,7 @@ function IngredientRow({
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-muted"
       >
-        <motion.div style={reduce ? {} : { scale: imgScale, y: imgY }} className="h-full w-full">
+        <motion.div style={reduce ? {} : { scale: imgScale, y: imgY }} className="relative h-full w-full">
           <Image
             src={item.visual}
             alt={item.ingredient.name}

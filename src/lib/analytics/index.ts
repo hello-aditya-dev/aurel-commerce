@@ -11,7 +11,13 @@ export type CommerceEvent =
   | "filter"
   | "newsletter_signup"
   | "checkout_click"
-  | "project_cta_click";
+  | "project_cta_click"
+  | "add_to_wishlist"
+  | "remove_from_wishlist"
+  | "compare_add"
+  | "compare_remove"
+  | "routine_builder_save"
+  | "back_to_top";
 
 interface AnalyticsPayload {
   [key: string]: unknown;

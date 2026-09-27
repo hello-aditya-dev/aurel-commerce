@@ -10,6 +10,8 @@ import { Wordmark } from "./wordmark";
 const PRIMARY = [
   { label: "Shop", href: "/shop" },
   { label: "Skin Diagnostic", href: "/diagnostic" },
+  { label: "Build a routine", href: "/build-routine" },
+  { label: "Compare products", href: "/compare" },
   { label: "Ingredients", href: "/ingredients" },
   { label: "Our Approach", href: "/approach" },
   { label: "Journal", href: "/journal" },

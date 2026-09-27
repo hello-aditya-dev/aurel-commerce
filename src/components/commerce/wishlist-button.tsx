@@ -3,6 +3,9 @@
 import * as React from "react";
 import { Heart } from "lucide-react";
 import { useWishlist } from "@/lib/commerce/wishlist-store";
+import { getProductBySlug } from "@/lib/commerce/provider";
+import { track } from "@/lib/analytics";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export function WishlistButton({
@@ -22,7 +25,20 @@ export function WishlistButton({
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    const wasSaved = isSaved;
     toggle(slug);
+    const product = getProductBySlug(slug);
+    if (!wasSaved) {
+      track("add_to_wishlist", { slug });
+      toast("Saved to wishlist", {
+        description: product ? `${product.name} · ${product.size}` : undefined,
+      });
+    } else {
+      track("remove_from_wishlist", { slug });
+      toast("Removed from wishlist", {
+        description: product ? product.name : undefined,
+      });
+    }
   };
 
   if (variant === "pill") {

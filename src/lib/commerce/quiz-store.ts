@@ -38,7 +38,7 @@ export const useQuiz = create<QuizState>()(
       setAnswers: (a) =>
         set((s) => ({ answers: { ...s.answers, ...a } as QuizAnswer })),
       complete: () =>
-        set({ result: computeRoutine(get().answers), step: 5 }),
+        set({ result: computeRoutine(get().answers) }),
     }),
     {
       name: "aurel-quiz",

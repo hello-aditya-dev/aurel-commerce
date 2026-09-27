@@ -39,7 +39,8 @@ const REACTIVITY_LABELS = ["Very calm", "Calm", "Average", "Reactive", "Very rea
 
 export default function DiagnosticPage() {
   const router = useRouter();
-  const { step, answers, next, prev, setAnswers, complete, reset } = useQuiz();
+  const { step: rawStep, answers, next, prev, setAnswers, complete, reset } = useQuiz();
+  const step = Math.min(rawStep, 4);
   const reduce = useReducedMotion();
   const [concerns, setConcerns] = React.useState<Set<Concern>>(new Set(answers.concerns));
 
