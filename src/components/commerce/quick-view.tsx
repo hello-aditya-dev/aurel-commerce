@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X, ArrowRight, Star, Plus } from "lucide-react";
 import { useCart } from "@/lib/commerce/cart-store";
@@ -103,7 +102,7 @@ function QuickViewContent({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={reduce ? undefined : { opacity: 0, scale: 0.96, y: 16 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-4xl bg-background overflow-hidden grid grid-cols-1 md:grid-cols-2 max-h-[90vh]"
+        className="relative w-full max-w-4xl max-h-[92vh] md:max-h-[90vh] bg-background overflow-hidden flex flex-col md:grid md:grid-cols-2"
       >
         {/* Close button */}
         <button
@@ -115,15 +114,12 @@ function QuickViewContent({
         </button>
 
         {/* Gallery */}
-        <div className="relative bg-muted">
-          <div className="relative aspect-[4/5] md:aspect-auto md:h-full overflow-hidden">
-            <Image
+        <div className="relative bg-muted shrink-0">
+          <div className="relative aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
+            <img
               src={featured.src}
               alt={featured.alt}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-              priority
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
           {/* Thumbnails */}
@@ -139,7 +135,7 @@ function QuickViewContent({
                     active === i ? "border-foreground" : "border-transparent opacity-70 hover:opacity-100"
                   )}
                 >
-                  <Image src={m.src} alt={m.alt} fill sizes="40px" className="object-cover" />
+                  <img src={m.src} alt={m.alt} className="absolute inset-0 h-full w-full object-cover" />
                 </button>
               ))}
             </div>

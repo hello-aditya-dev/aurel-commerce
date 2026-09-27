@@ -3,24 +3,44 @@
 import * as React from "react";
 import { RatingStars } from "@/components/commerce/product-card";
 import { Reveal } from "@/components/motion/reveal";
-import { ThumbsUp } from "lucide-react";
+import { ThumbsUp, Pencil } from "lucide-react";
 import type { Product, Review } from "@/types/commerce";
+import { useUserReviews } from "@/lib/commerce/user-reviews-store";
+import { WriteReviewDialog } from "@/components/product/write-review-dialog";
 
 export function ReviewsSection({ product }: { product: Product }) {
   const [filter, setFilter] = React.useState<number | null>(null);
   const [helpful, setHelpful] = React.useState<Set<string>>(new Set());
+  const [writeOpen, setWriteOpen] = React.useState(false);
+  const hasHydrated = useUserReviews((s) => s.hasHydrated);
+  const byProduct = useUserReviews((s) => s.byProduct);
+  const userReviews = React.useMemo(
+    () => byProduct[product.slug] ?? [],
+    [byProduct, product.slug]
+  );
+
+  // Merge user-submitted reviews with the catalog reviews
+  const allReviews = React.useMemo(() => {
+    return [...userReviews, ...product.reviews];
+  }, [userReviews, product.reviews]);
 
   const distribution = React.useMemo(() => {
     const dist: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
-    product.reviews.forEach((r) => {
+    allReviews.forEach((r) => {
       dist[r.rating] = (dist[r.rating] ?? 0) + 1;
     });
     return dist;
-  }, [product.reviews]);
+  }, [allReviews]);
 
   const reviews = filter
-    ? product.reviews.filter((r) => r.rating === filter)
-    : product.reviews;
+    ? allReviews.filter((r) => r.rating === filter)
+    : allReviews;
+
+  // Compute live average + count (combining user + catalog reviews)
+  const liveRating = allReviews.length > 0
+    ? allReviews.reduce((s, r) => s + r.rating, 0) / allReviews.length
+    : product.rating;
+  const liveCount = product.reviewCount + userReviews.length;
 
   const toggleHelpful = (id: string) => {
     setHelpful((prev) => {
@@ -36,19 +56,33 @@ export function ReviewsSection({ product }: { product: Product }) {
       <div className="md:col-span-4">
         <p className="text-eyebrow text-muted-foreground mb-5">Reviews</p>
         <div className="flex items-baseline gap-3">
-          <span className="font-serif text-5xl font-light">{product.rating.toFixed(1)}</span>
+          <span className="font-serif text-5xl font-light">{liveRating.toFixed(1)}</span>
           <span className="text-sm text-muted-foreground">/ 5</span>
         </div>
-        <RatingStars value={product.rating} size="md" className="mt-3" />
+        <RatingStars value={liveRating} size="md" className="mt-3" />
         <p className="text-sm text-muted-foreground mt-3">
-          Based on {product.reviewCount.toLocaleString()} reviews
+          Based on {liveCount.toLocaleString()} reviews
+          {hasHydrated && userReviews.length > 0 && (
+            <span className="block text-xs mt-1 text-foreground/70">
+              ({userReviews.length} from you)
+            </span>
+          )}
         </p>
+
+        <button
+          onClick={() => setWriteOpen(true)}
+          className="mt-6 inline-flex items-center gap-2 h-10 px-4 border border-foreground/30 text-foreground text-xs uppercase tracking-[0.14em] hover:border-foreground hover:bg-foreground/5 transition-colors"
+        >
+          <Pencil className="h-3.5 w-3.5" />
+          Write a review
+        </button>
 
         {/* Distribution */}
         <div className="mt-8 space-y-2">
           {[5, 4, 3, 2, 1].map((star) => {
             const count = distribution[star];
-            const pct = product.reviewCount > 0 ? (count / product.reviewCount) * 100 : 0;
+            const total = allReviews.length;
+            const pct = total > 0 ? (count / total) * 100 : 0;
             return (
               <button
                 key={star}
@@ -95,6 +129,12 @@ export function ReviewsSection({ product }: { product: Product }) {
           Illustrative demonstration reviews · AUREL is a fictional concept brand
         </p>
       </div>
+
+      <WriteReviewDialog
+        product={product}
+        open={writeOpen}
+        onOpenChange={setWriteOpen}
+      />
     </section>
   );
 }

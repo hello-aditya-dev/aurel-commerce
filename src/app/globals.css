@@ -302,3 +302,47 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Print — used by the routine results Save-as-PDF flow */
+@media print {
+  /* Hide chrome — header, footer, drawers, fixed UI */
+  header,
+  footer,
+  [data-slot="sheet-content"],
+  [data-slot="dialog-content"],
+  .fixed,
+  [class*="sticky"] {
+    display: none !important;
+  }
+
+  /* Force light theme + readable body */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+
+  /* Use full width */
+  .container-aurel {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Reset the routine section to its essentials */
+  main {
+    padding: 0 !important;
+  }
+
+  /* Avoid page breaks inside product rows */
+  a, li, article, figure {
+    break-inside: avoid;
+  }
+
+  /* Show URLs after links (helpful in printed routines) */
+  a[href^="/"]::after {
+    content: " (https://hello-aditya-dev.github.io/aurel-commerce" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+}

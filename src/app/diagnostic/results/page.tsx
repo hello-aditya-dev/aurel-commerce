@@ -5,11 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, Plus, Minus, ArrowRight, RotateCcw } from "lucide-react";
+import { Check, Plus, Minus, ArrowRight, RotateCcw, Download } from "lucide-react";
 import { useQuiz } from "@/lib/commerce/quiz-store";
 import { useCart } from "@/lib/commerce/cart-store";
 import { getProductBySlug, formatPrice } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export default function ResultsPage() {
@@ -47,6 +48,15 @@ export default function ResultsPage() {
     track("add_bundle", { slug: "quiz_routine", value: finalTotal, source: "diagnostic" });
     addMany(allSlugs, "one-time");
     openCart();
+  };
+
+  const handleExportPDF = () => {
+    track("routine_export_pdf", { protocol: result.protocolName, items: allSlugs.length });
+    toast("Opening print dialog", {
+      description: "Choose 'Save as PDF' as the destination to save your routine.",
+    });
+    // Give the toast time to show before the print dialog hijacks focus
+    setTimeout(() => window.print(), 400);
   };
 
   return (
@@ -122,6 +132,13 @@ export default function ResultsPage() {
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Retake
+            </button>
+            <button
+              onClick={handleExportPDF}
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 border border-foreground/30 hover:border-foreground text-xs uppercase tracking-[0.14em] transition-colors"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Save as PDF
             </button>
             <button
               onClick={addAll}

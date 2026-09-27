@@ -19,7 +19,10 @@ export type CommerceEvent =
   | "routine_builder_save"
   | "back_to_top"
   | "quick_view_open"
-  | "share_cart";
+  | "share_cart"
+  | "review_submit"
+  | "wishlist_share"
+  | "routine_export_pdf";
 
 interface AnalyticsPayload {
   [key: string]: unknown;
