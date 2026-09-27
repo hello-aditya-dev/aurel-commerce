@@ -229,3 +229,82 @@ Unresolved / next-phase opportunities:
 - Add keyboard shortcut help overlay (Cmd+/ ?) since Cmd+K search + Cmd+. cart are now available
 - Consider exporting the cart/wishlist/compare state via a "share" link (URL-encoded)
 - Add product video for hero (currently parallax image only)
+
+---
+Task ID: round-4 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-3 complete)
+- QA pass via agent-browser with full console.error/console.warn + window error
+  + unhandledrejection capture
+- Bug found: Radix Dialog/Sheet components were logging
+  "Missing `Description` or `aria-describedby`" warnings on every dialog open.
+  Fixed by adding sr-only DialogDescription/SheetDescription to:
+  - search-overlay.tsx
+  - cart-drawer.tsx
+  - filter-drawer.tsx
+
+Features added:
+- Quick-view modal: QuickViewProvider context + useQuickView hook; View
+  button on ProductCard (desktop hover + mobile 2-button row); modal shows
+  gallery with thumbnails, product name/price/rating/size, top 3 benefits,
+  key actives chips, Add to bag (closes modal + opens cart), Save (wishlist)
+  pill, Compare pill, View full details link. Body scroll lock, Escape to
+  close, framer-motion spring-in animation, reduced-motion aware.
+- Keyboard shortcuts help overlay: press '?' anywhere to open. Lists all
+  shortcuts with kbd keys: Cmd+K (search), Cmd+. (cart), ? (help),
+  Esc (close), G+H (home), G+S (shop), G+D (diagnostic), G+W (wishlist),
+  G+C (compare), G+B (build-routine), G+J (journal). Vim-style g-prefix
+  navigation with 800ms timeout. Skips when typing in inputs.
+- Share Cart: encodes cart state into compact URL format
+  (?cart=slug:qty:variant,...) with bundle support (b: prefix). Share Cart
+  button in cart drawer copies URL to clipboard + shows 'Link copied' state
+  + toast. CartLoader component reads ?cart= on mount, pre-fills cart with
+  correct variant (subscription or one-time), strips query param after
+  import, shows 'Imported N items from shared cart' toast.
+- Recently-viewed page (/recently-viewed): dedicated page showing products
+  the user has browsed (read from existing recently-viewed-store), with
+  Clear history button + empty state with CTA.
+- Rotating announcement bar: cycles through 5 editorial messages every 6s
+  with smooth fade transition (respects reduced-motion). Replaces the
+  single static announcement.
+
+Style:
+- ProductCard hover overlay now shows Quick Add + View side-by-side on
+  desktop (was just Quick Add); mobile shows Add + View in a 2-button row
+
+Verification (VLM-rated):
+- Quick view modal: 10/10 (deployed) / 9/10 (local)
+- Keyboard help overlay: 10/10 (deployed)
+- Share cart button: 8/10 (Link copied state confirmed)
+- Share-cart URL ingestion: bag pre-filled with 2 Barrier Reset Cleanser
+  (subscription) — confirmed via DOM ('Your bag (2)')
+- Recently-viewed page: 9/10 (3 products visible in grid)
+- 0 console errors / 0 a11y warnings (Radix Description warnings resolved)
+- Lint: clean (0 errors, 0 warnings)
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (7 commits on main now)
+- New routes: /recently-viewed (in footer + sitemap)
+- New components: keyboard-help, quick-view, cart-loader, announcement-bar
+- New helper: src/lib/commerce/share-cart.ts (encode/decode cart state)
+- All 21 deployed routes return 200 OK
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Build out account UI (sign-in form is concept-only)
+- Add customer reviews submission form (currently read-only demo data)
+- Add a "find my shade/texture" interactive recommender if catalog expands
+- Consider A/B test scaffolding for CTA copy variants
+- Add wishlist sharing (similar to share-cart, encode wishlist slugs in URL)
+- Add export-to-PDF for routine results (for saving protocols)
+- Add account-level saved routines (when auth backend exists)
+- The Quick View modal currently shows top 3 benefits — could expand to
+  include mini-ingredient carousel or texture preview
+- The share-cart URL is currently anonymous — could add sender name via
+  ?from= param when account system exists
