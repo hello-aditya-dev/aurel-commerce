@@ -308,3 +308,92 @@ Unresolved / next-phase opportunities:
   include mini-ingredient carousel or texture preview
 - The share-cart URL is currently anonymous — could add sender name via
   ?from= param when account system exists
+
+---
+Task ID: round-5 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-4 complete)
+- QA pass via agent-browser:
+  - All 8 PDPs return 200 OK
+  - g-prefix keyboard navigation tested: G+S (shop), G+D (diagnostic),
+    G+H (home) all work
+  - Announcement bar rotation confirmed (cycles every 6s, transitions
+    between messages)
+  - Share-cart full round trip: encode → URL → CartLoader pre-fills cart
+    with correct variant (confirmed "Your bag (2)" with subscription items)
+  - Mobile (390x844) quick-view modal was 3/10 — broken layout
+
+Bugs fixed:
+- Quick-view LCP image warning: Next/Image with priority still warned
+  about eager loading on the modal's primary image — switched to plain
+  <img> for the modal gallery + thumbnails (small finite set, no
+  responsive sizing needed inside the modal)
+- Mobile quick-view modal overflow (3/10 → 9/10): switched layout from
+  grid-cols-1 to flex flex-col on mobile (md:grid md:grid-cols-2), constrained
+  gallery aspect ratio to 4/3 on mobile (was 4/5 which filled viewport)
+- ReviewsSection infinite re-render: useUserReviews selector returned a
+  fresh [] array reference each render, causing Zustand to detect a change
+  and re-render forever. Fixed by selecting byProduct + using React.useMemo
+  for the per-product slice.
+
+Features added:
+- Customer review submission: WriteReviewDialog modal with interactive star
+  rating (hover preview, framer-motion scale on selection), title/body/author
+  fields with character counts + validation, optional skin type + age range
+  dropdowns. Persists to localStorage via user-reviews-store. ReviewsSection
+  now merges user reviews with catalog reviews, recomputes average rating +
+  distribution live, shows "Write a review" button, displays "(N from you)"
+  indicator next to the count.
+- Wishlist sharing: encodeWishlistForShare helper + Share Wishlist button on
+  /wishlist page (copies URL with ?wishlist=slug1,slug2 to clipboard + "Link
+  copied" state + toast). WishlistLoader component reads ?wishlist= on mount,
+  merges into existing wishlist, shows toast, strips query param.
+- Routine results export-to-PDF: "Save as PDF" button on /diagnostic/results
+  triggers window.print() after a 400ms delay (lets toast show first). Added
+  comprehensive @media print stylesheet to globals.css: hides header/footer/
+  drawers/fixed UI, forces light theme + readable 11pt body, full-width
+  container, break-inside:avoid on cards, prints URLs after internal links
+  for offline reference.
+
+Verification (VLM-rated):
+- Quick view modal mobile (390px): 9/10 (was 3/10 before fix)
+- Write-a-review dialog (local): all fields present + submit + review appears
+  in list immediately (verified "Test User" + "Great for stressed skin" in
+  DOM after submit)
+- Write-a-review dialog (deployed): 10/10 — DOM confirms star rating, title,
+  body (0/600 counter), name, skin type (Dry/Oily/Combination/Balanced/
+  Sensitive), age range (18-24/25-34/etc.), Submit Review + Cancel, demo
+  disclaimer all present
+- Share wishlist button: 10/10 ("Link copied" state + toast confirmed)
+- Reviews section (deployed): 10/10 (Write a review button + distribution
+  chart + average rating all visible)
+- 0 console errors / 0 a11y warnings / 0 LCP warnings
+- Lint: clean (0 errors, 0 warnings)
+- All 22 deployed routes return 200 OK (including /diagnostic/results/)
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (9 commits on main now)
+- New stores: src/lib/commerce/user-reviews-store.ts
+- New components: write-review-dialog, wishlist-loader
+- New helpers: src/lib/commerce/share-wishlist.ts
+- New analytics events: review_submit, wishlist_share, routine_export_pdf
+- Print stylesheet added to globals.css for routine PDF export
+- All features verified on deployed site
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Build out account UI (sign-in form is concept-only)
+- Add a "find my shade/texture" interactive recommender if catalog expands
+- Consider A/B test scaffolding for CTA copy variants
+- Add account-level saved routines (when auth backend exists)
+- The Quick View modal could include a mini-ingredient carousel or texture preview
+- Share-cart URL could include sender name via ?from= param when account exists
+- Consider adding review moderation (currently all submitted reviews visible immediately)
+- Add product question/answer section (Q&A) on PDP
+- Add ingredient compatibility checker (select 2 products → see if they layer)
