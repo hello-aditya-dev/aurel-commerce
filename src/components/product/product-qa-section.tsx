@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { MessageCircle, X, Send, Check } from "lucide-react";
+import { MessageCircle, X, Send, ThumbsUp, ThumbsDown, Check } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useProductQA } from "@/lib/commerce/product-qa-store";
 import { track } from "@/lib/analytics";
@@ -14,14 +14,24 @@ export function ProductQASection({ product }: { product: Product }) {
   const hasHydrated = useProductQA((s) => s.hasHydrated);
   const byProduct = useProductQA((s) => s.byProduct);
   const add = useProductQA((s) => s.add);
+  const vote = useProductQA((s) => s.vote);
   const [writeOpen, setWriteOpen] = React.useState(false);
   const [openId, setOpenId] = React.useState<string | null>(null);
+  const [voted, setVoted] = React.useState<Record<string, "helpful" | "not-helpful">>({});
   const reduce = useReducedMotion();
 
   const items = React.useMemo(
     () => byProduct[product.slug] ?? [],
     [byProduct, product.slug]
   );
+
+  const handleVote = (qaId: string, voteType: "helpful" | "not-helpful") => {
+    if (voted[qaId]) return; // one vote per question
+    vote(product.slug, qaId, voteType);
+    setVoted((prev) => ({ ...prev, [qaId]: voteType }));
+    track("qa_vote", { slug: product.slug, qaId, vote: voteType });
+    toast(voteType === "helpful" ? "Marked as helpful" : "Marked as not helpful");
+  };
 
   return (
     <section className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
@@ -97,6 +107,35 @@ export function ProductQASection({ product }: { product: Product }) {
                           AUREL · Answer
                         </p>
                         <p className="text-sm text-foreground/85 leading-relaxed">{item.answer}</p>
+                        {/* Voting */}
+                        <div className="mt-4 flex items-center gap-3">
+                          <button
+                            onClick={() => handleVote(item.id, "helpful")}
+                            disabled={!!voted[item.id]}
+                            className={cn(
+                              "inline-flex items-center gap-1.5 text-xs transition-colors",
+                              voted[item.id] === "helpful"
+                                ? "text-foreground font-medium"
+                                : "text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                            )}
+                          >
+                            <ThumbsUp className={cn("h-3.5 w-3.5", voted[item.id] === "helpful" && "fill-current")} />
+                            Helpful ({item.helpful ?? 0})
+                          </button>
+                          <button
+                            onClick={() => handleVote(item.id, "not-helpful")}
+                            disabled={!!voted[item.id]}
+                            className={cn(
+                              "inline-flex items-center gap-1.5 text-xs transition-colors",
+                              voted[item.id] === "not-helpful"
+                                ? "text-foreground font-medium"
+                                : "text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                            )}
+                          >
+                            <ThumbsDown className={cn("h-3.5 w-3.5", voted[item.id] === "not-helpful" && "fill-current")} />
+                            Not helpful ({item.notHelpful ?? 0})
+                          </button>
+                        </div>
                       </div>
                     </motion.div>
                   )}

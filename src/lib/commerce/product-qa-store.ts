@@ -10,6 +10,8 @@ export interface QAItem {
   author: string;
   date: string;
   answered?: boolean;
+  helpful?: number;
+  notHelpful?: number;
 }
 
 interface ProductQAState {
@@ -17,6 +19,7 @@ interface ProductQAState {
   hasHydrated: boolean;
   setHasHydrated: (v: boolean) => void;
   add: (productSlug: string, question: string, author: string) => void;
+  vote: (productSlug: string, qaId: string, vote: "helpful" | "not-helpful") => void;
   getForProduct: (productSlug: string) => QAItem[];
   clear: () => void;
 }
@@ -32,6 +35,8 @@ const SEED: Record<string, QAItem[]> = {
       author: "M. Vasquez",
       date: "2025-08-22",
       answered: true,
+      helpful: 14,
+      notHelpful: 0,
     },
     {
       id: "qa-seed-2",
@@ -41,6 +46,8 @@ const SEED: Record<string, QAItem[]> = {
       author: "J. Whitfield",
       date: "2025-07-30",
       answered: true,
+      helpful: 9,
+      notHelpful: 1,
     },
   ],
   "retinal-renewal-0-1": [
@@ -52,6 +59,8 @@ const SEED: Record<string, QAItem[]> = {
       author: "C. Larsen",
       date: "2025-08-15",
       answered: true,
+      helpful: 22,
+      notHelpful: 0,
     },
   ],
 };
@@ -73,11 +82,30 @@ export const useProductQA = create<ProductQAState>()(
                 author,
                 date: new Date().toISOString().slice(0, 10),
                 answered: false,
+                helpful: 0,
+                notHelpful: 0,
               },
               ...(s.byProduct[productSlug] ?? []),
             ],
           },
         })),
+      vote: (productSlug, qaId, voteType) =>
+        set((s) => {
+          const items = s.byProduct[productSlug];
+          if (!items) return s;
+          return {
+            byProduct: {
+              ...s.byProduct,
+              [productSlug]: items.map((item) => {
+                if (item.id !== qaId) return item;
+                if (voteType === "helpful") {
+                  return { ...item, helpful: (item.helpful ?? 0) + 1 };
+                }
+                return { ...item, notHelpful: (item.notHelpful ?? 0) + 1 };
+              }),
+            },
+          };
+        }),
       getForProduct: (productSlug) => get().byProduct[productSlug] ?? [],
       clear: () => set({ byProduct: SEED }),
     }),

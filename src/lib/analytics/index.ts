@@ -24,7 +24,9 @@ export type CommerceEvent =
   | "wishlist_share"
   | "routine_export_pdf"
   | "qa_submit"
-  | "compatibility_check";
+  | "qa_vote"
+  | "compatibility_check"
+  | "routine_save";
 
 interface AnalyticsPayload {
   [key: string]: unknown;

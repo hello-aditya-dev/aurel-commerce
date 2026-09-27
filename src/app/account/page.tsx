@@ -6,13 +6,15 @@ import { useWishlist } from "@/lib/commerce/wishlist-store";
 import { useUserReviews } from "@/lib/commerce/user-reviews-store";
 import { useCart } from "@/lib/commerce/cart-store";
 import { useRecentlyViewed } from "@/lib/commerce/recently-viewed-store";
-import { getProductsBySlugs } from "@/lib/commerce/provider";
+import { useSavedRoutines } from "@/lib/commerce/saved-routines-store";
+import { getProductsBySlugs, formatPrice } from "@/lib/commerce/provider";
 import { AccountForm } from "@/components/commerce/account-form";
-import { User, Heart, Clock, Star, Package, Settings } from "lucide-react";
+import { User, Heart, Clock, Star, Package, Settings, Bookmark, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { id: "profile", label: "Profile", icon: User },
+  { id: "routines", label: "Saved routines", icon: Bookmark },
   { id: "wishlist", label: "Wishlist", icon: Heart },
   { id: "reviews", label: "Your reviews", icon: Star },
   { id: "history", label: "Recently viewed", icon: Clock },
@@ -32,6 +34,9 @@ export default function AccountPage() {
   const cartHydrated = useCart((s) => s.hasHydrated);
   const recentSlugs = useRecentlyViewed((s) => s.slugs);
   const recentHydrated = useRecentlyViewed((s) => s.hasHydrated);
+  const savedRoutines = useSavedRoutines((s) => s.routines);
+  const routinesHydrated = useSavedRoutines((s) => s.hasHydrated);
+  const removeRoutine = useSavedRoutines((s) => s.remove);
 
   // Count user-submitted reviews
   const reviewCount = React.useMemo(() => {
@@ -41,6 +46,7 @@ export default function AccountPage() {
   const wishlistCount = wishHydrated ? wishSlugs.length : 0;
   const historyCount = recentHydrated ? recentSlugs.length : 0;
   const cartCount = cartHydrated ? cartLines.reduce((s, l) => s + l.quantity, 0) : 0;
+  const routinesCount = routinesHydrated ? savedRoutines.length : 0;
 
   return (
     <>
@@ -68,6 +74,7 @@ export default function AccountPage() {
                 const count = t.id === "wishlist" ? wishlistCount
                   : t.id === "reviews" ? reviewCount
                   : t.id === "history" ? historyCount
+                  : t.id === "routines" ? routinesCount
                   : t.id === "orders" ? 0
                   : null;
                 return (
@@ -99,7 +106,8 @@ export default function AccountPage() {
 
           {/* Content */}
           <div>
-            {tab === "profile" && <ProfileTab cartCount={cartCount} wishCount={wishlistCount} reviewCount={reviewCount} historyCount={historyCount} />}
+            {tab === "profile" && <ProfileTab cartCount={cartCount} wishCount={wishlistCount} reviewCount={reviewCount} historyCount={historyCount} routinesCount={routinesCount} />}
+            {tab === "routines" && <RoutinesTab routines={savedRoutines} hydrated={routinesHydrated} onRemove={removeRoutine} />}
             {tab === "wishlist" && <WishlistTab slugs={wishSlugs} hydrated={wishHydrated} />}
             {tab === "reviews" && <ReviewsTab byProduct={byProduct} hydrated={reviewsHydrated} />}
             {tab === "history" && <HistoryTab slugs={recentSlugs} hydrated={recentHydrated} />}
@@ -112,7 +120,7 @@ export default function AccountPage() {
   );
 }
 
-function ProfileTab({ cartCount, wishCount, reviewCount, historyCount }: { cartCount: number; wishCount: number; reviewCount: number; historyCount: number }) {
+function ProfileTab({ cartCount, wishCount, reviewCount, historyCount, routinesCount }: { cartCount: number; wishCount: number; reviewCount: number; historyCount: number; routinesCount: number }) {
   return (
     <div>
       <p className="text-eyebrow text-muted-foreground mb-5">Overview</p>
@@ -120,9 +128,9 @@ function ProfileTab({ cartCount, wishCount, reviewCount, historyCount }: { cartC
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {[
           { label: "Cart items", value: cartCount },
+          { label: "Saved routines", value: routinesCount },
           { label: "Wishlist", value: wishCount },
           { label: "Reviews written", value: reviewCount },
-          { label: "Recently viewed", value: historyCount },
         ].map((s) => (
           <div key={s.label} className="border border-border p-4">
             <p className="font-serif text-3xl tabular-nums">{s.value}</p>
@@ -134,6 +142,80 @@ function ProfileTab({ cartCount, wishCount, reviewCount, historyCount }: { cartC
         <h3 className="font-serif text-lg mb-4">Sign in</h3>
         <AccountForm />
       </div>
+    </div>
+  );
+}
+
+function RoutinesTab({ routines, hydrated, onRemove }: { routines: ReturnType<typeof useSavedRoutines.getState>["routines"]; hydrated: boolean; onRemove: (id: string) => void }) {
+  return (
+    <div>
+      <p className="text-eyebrow text-muted-foreground mb-5">Saved routines</p>
+      <h2 className="font-serif text-2xl mb-6">{routines.length} {routines.length === 1 ? "routine" : "routines"}</h2>
+      {!hydrated ? (
+        <p className="text-sm text-muted-foreground">Loading…</p>
+      ) : routines.length === 0 ? (
+        <div className="border border-border p-8 text-center">
+          <Bookmark className="h-8 w-8 text-muted-foreground mx-auto mb-4" />
+          <p className="font-serif text-lg mb-2">No saved routines yet.</p>
+          <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
+            Build a routine on the routine builder page and tap "Save routine to account".
+          </p>
+          <Link
+            href="/build-routine"
+            className="inline-flex items-center gap-2 h-11 px-6 bg-foreground text-background text-xs uppercase tracking-[0.14em] hover:bg-foreground/90 transition-colors"
+          >
+            Build a routine
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      ) : (
+        <ul className="space-y-4">
+          {routines.map((r) => {
+            const products = getProductsBySlugs(r.slugs);
+            return (
+              <li key={r.id} className="border border-border p-4">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif text-lg leading-tight">{r.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {new Date(r.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · {r.slugs.length} products
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="font-serif text-lg tabular-nums">{formatPrice(r.total)}</p>
+                    <p className="text-xs text-muted-foreground tabular-nums">save {formatPrice(r.savings)}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mb-3 overflow-x-auto no-scrollbar">
+                  {products.slice(0, 6).map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/products/${p.slug}`}
+                      className="relative h-10 w-8 shrink-0 overflow-hidden bg-muted"
+                    >
+                      <img src={p.media[0].src} alt={p.media[0].alt} className="absolute inset-0 h-full w-full object-cover" />
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <Link
+                    href={`/build-routine`}
+                    className="flex-1 h-9 border border-foreground/30 text-foreground text-xs uppercase tracking-[0.14em] flex items-center justify-center hover:border-foreground transition-colors"
+                  >
+                    Open in builder
+                  </Link>
+                  <button
+                    onClick={() => onRemove(r.id)}
+                    className="h-9 px-4 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors border border-border"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

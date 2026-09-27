@@ -3,10 +3,11 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, Plus, X, ArrowRight, Trash2, Sparkles } from "lucide-react";
+import { Check, Plus, X, ArrowRight, Trash2, Sparkles, Bookmark, FolderOpen } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { getAllProducts, formatPrice, getProductsBySlugs } from "@/lib/commerce/provider";
 import { useCart } from "@/lib/commerce/cart-store";
+import { useSavedRoutines } from "@/lib/commerce/saved-routines-store";
 import { track } from "@/lib/analytics";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -48,6 +49,32 @@ export default function BuildRoutinePage() {
       description: `${selectedProducts.length} products · ${formatPrice(finalTotal)} (save ${formatPrice(savings)})`,
     });
     openCart();
+  };
+
+  // Saved routines
+  const saveRoutine = useSavedRoutines((s) => s.save);
+  const savedRoutines = useSavedRoutines((s) => s.routines);
+  const removeRoutine = useSavedRoutines((s) => s.remove);
+  const [saveName, setSaveName] = React.useState("");
+
+  const handleSave = () => {
+    if (selectedProducts.length === 0) return;
+    const name = saveName.trim() || `Routine ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
+    saveRoutine(name, Array.from(selected), finalTotal, savings);
+    track("routine_save", { name, slugs: Array.from(selected), total: finalTotal });
+    toast("Routine saved", {
+      description: `"${name}" is now in your account under Saved Routines.`,
+    });
+    setSaveName("");
+  };
+
+  const loadRoutine = (id: string) => {
+    const r = savedRoutines.find((x) => x.id === id);
+    if (!r) return;
+    setSelected(new Set(r.slugs));
+    toast(`Loaded "${r.name}"`, {
+      description: `${r.slugs.length} products loaded into the builder.`,
+    });
   };
 
   const clearAll = () => {
@@ -213,6 +240,19 @@ export default function BuildRoutinePage() {
                     <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                   <button
+                    onClick={handleSave}
+                    disabled={selectedProducts.length === 0}
+                    className={cn(
+                      "mt-3 w-full h-10 border text-xs uppercase tracking-[0.14em] flex items-center justify-center gap-2 transition-colors",
+                      selectedProducts.length === 0
+                        ? "border-border text-muted-foreground cursor-not-allowed"
+                        : "border-foreground/30 text-foreground hover:border-foreground hover:bg-foreground/5"
+                    )}
+                  >
+                    <Bookmark className="h-3.5 w-3.5" />
+                    Save routine to account
+                  </button>
+                  <button
                     onClick={clearAll}
                     className="mt-3 w-full text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center gap-2"
                   >
@@ -220,6 +260,39 @@ export default function BuildRoutinePage() {
                     Clear routine
                   </button>
                 </>
+              )}
+
+              {/* Saved routines list */}
+              {savedRoutines.length > 0 && (
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-eyebrow text-muted-foreground mb-3 flex items-center gap-2">
+                    <FolderOpen className="h-3.5 w-3.5" />
+                    Saved routines ({savedRoutines.length})
+                  </p>
+                  <ul className="space-y-2">
+                    {savedRoutines.map((r) => (
+                      <li key={r.id} className="flex items-center gap-2 p-2 border border-border bg-background">
+                        <button
+                          onClick={() => loadRoutine(r.id)}
+                          className="flex-1 text-left min-w-0"
+                          aria-label={`Load ${r.name}`}
+                        >
+                          <p className="font-serif text-sm truncate">{r.name}</p>
+                          <p className="text-[0.625rem] text-muted-foreground tabular-nums">
+                            {r.slugs.length} products · {formatPrice(r.total)}
+                          </p>
+                        </button>
+                        <button
+                          onClick={() => { removeRoutine(r.id); toast("Routine removed"); }}
+                          aria-label={`Remove ${r.name}`}
+                          className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                        >
+                          <X className="h-3.5 w-3.5" />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
 
               <div className="mt-6 pt-6 border-t border-border">
