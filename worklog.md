@@ -562,3 +562,75 @@ Unresolved / next-phase opportunities:
 - Expand Q&A voting to allow changing vote (currently one-way)
 - Add routine sharing via URL (encode saved routine in URL for sharing)
 - Consider adding a "routine score" that rates how well products layer
+
+---
+Task ID: round-8 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-7 complete)
+- QA pass via agent-browser:
+  - Q&A voting: helpful vote confirmed (14→15), persisted on reload,
+    both buttons disabled after voting
+  - Saved routines: save from build-routine → view in account Saved
+    routines tab → load → remove all work
+  - Mobile Q&A voting (390px): 9/10
+  - Mobile build-routine (390px): 9/10
+  - All 8 PDPs have Q&A section + Ask button
+  - Lint: clean
+
+No bugs found this round — all features from rounds 1-7 are stable.
+
+Features added:
+- Routine sharing via URL: encodeRoutineForShare helper (name|slug1,slug2
+  format) + Share button on each saved routine in build-routine sidebar
+  (copies URL with ?routine= to clipboard + 'Link copied' state with check
+  icon + toast). RoutineLoader component reads ?routine= on mount, imports
+  the routine into saved routines with correct total/savings, shows toast,
+  strips query param.
+- Review photos upload: Photo (optional) field in WriteReviewDialog with
+  hidden file input (max 2MB, image/* only). FileReader converts to base64
+  data URL. Preview thumbnail (24x24) with remove button. Photo stored in
+  review.photo field (added to Review type). ReviewCard in reviews-section
+  displays photo as 32x32 thumbnail with 'Customer photo' label. Account
+  Reviews tab also shows photo as 20x20 thumbnail.
+- Routine score: computeRoutineScore helper that evaluates selected products
+  — awards points for covering all 4 routine steps (cleanse +10, treat +15,
+  restore +10, protect +15), AM+PM coverage (+10), multiple barrier actives
+  (+10); penalizes incompatible ingredient pairs (vitamin-c + retinal → -20).
+  Score display in build-routine sidebar with progress bar + label
+  (Excellent 85+/Good 70+/Fair 50+/Needs work) + issues list (red X) +
+  bonuses list (green check). Verified: 95/100 · Excellent for cleanser +
+  2 serums selection.
+
+Verification (VLM-rated):
+- Q&A voting: confirmed Helpful (14) → (15), persisted, disabled after
+- Saved routines: confirmed save → view in account → load → remove
+- Mobile Q&A voting: 9/10, build-routine: 9/10
+- Routine score: 95/100 · Excellent confirmed via DOM
+- Share routine: link copied state confirmed (check icon appeared)
+- 0 console errors / 0 a11y warnings
+- Lint: clean (0 errors, 0 warnings)
+- All 22 deployed routes return 200 OK
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (15 commits on main now)
+- New stores/helpers: share-routine.ts, routine-score.ts
+- New components: routine-loader
+- New analytics events: routine_share, review_photo_add
+- Type change: Review.photo?: string (base64 data URL)
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Add ingredient compatibility checker for 3+ products (currently 2 only)
+- Add product video for hero (currently parallax image only)
+- Consider adding a "find my shade/texture" interactive recommender
+- Add review moderation (currently all submitted reviews visible immediately)
+- Expand Q&A voting to allow changing vote (currently one-way)
+- Consider expanding the compatibility matrix with more ingredient pairs
+- Add multi-photo upload to reviews (currently 1 photo max)
+- Add routine score history (track score over time as user edits)
