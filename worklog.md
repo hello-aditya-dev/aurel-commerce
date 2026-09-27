@@ -153,3 +153,79 @@ Unresolved / next-phase opportunities:
 - Build out account UI (sign-in form is concept-only)
 - Add toast feedback when adding to wishlist
 - The PDP sticky panel might benefit from a max-height limit when the panel content is very long (currently uses max-h-[calc(100vh-9rem)] + overflow-y-auto which should handle it but worth QA on smaller laptop screens)
+
+---
+Task ID: round-3 (cron webDevReview)
+Agent: main (cron-triggered)
+Task: QA via agent-browser, fix bugs, add features, improve styling
+
+Work Log:
+- Reviewed worklog.md (rounds 1-2 complete)
+- QA pass via agent-browser with console.error/console.warn capture
+- 2 bugs found and fixed:
+  1. ingredient-story motion.div had position:static, causing Next.js Image with `fill`
+     to log "parent element with invalid position" warnings — fixed by adding `relative`
+     class to the motion.div wrapper
+  2. Quiz completion crashed with `Cannot read properties of undefined (reading 'eyebrow')`
+     because complete() set step: 5, then STEPS[5] was undefined — fixed by removing the
+     step:5 increment from complete() in quiz-store.ts, plus defensive Math.min(step, 4)
+     in the diagnostic page to handle any stale persisted state
+
+Features added:
+- Product comparison (max 3 side-by-side): Zustand compare-store with persist,
+  CompareButton (icon + pill variants) on ProductCard (top-right vertical stack
+  with wishlist heart), CompareBar fixed at bottom (thumbnails + clear/compare-now
+  CTAs + count) using framer-motion slide-in + AnimatePresence, dedicated /compare
+  page with editorial comparison table (sticky left spec column, 10 spec rows:
+  price/size/category/concerns/skinTypes/keyIngredients/routineStep/AM-PM/
+  subscription/rating/texture, per-product Add-to-bag row at bottom)
+- Routine builder (/build-routine): interactive page with 4 routine steps
+  (cleanse/treat/restore/protect) showing products as clickable cards; sticky
+  sidebar on the right with animated AnimatePresence list of selected products
+  + subtotal + 12% bundle saving + total + "Add routine to bag" + clear + link
+  to skin diagnostic as alternative
+- Toast feedback for wishlist add/remove (sonner) with product name + size
+- Back-to-top floating button — appears after 800px scroll, smooth scroll,
+  reduced-motion aware, analytics-tracked
+- Scroll progress indicator at top of page (2px bar, spring-animated via
+  useScroll + useSpring)
+
+Style polish:
+- Hero: subtle scroll-linked parallax (y + scale on bg image, y + opacity on text),
+  side vertical accent bars on desktop, parallax disabled for reduced-motion
+- Film section: scroll-linked x-pan on image, editorial film-slate corner marks
+  (AR · 01 · Film / 00:00:14:08 / SCENE 01 · TAKE 04 / F · 5.6 · 1/125), grain overlay
+- ProductCard top-right now stacks wishlist heart + compare icon vertically
+
+Verification (VLM-rated):
+- Compare empty state: 9/10
+- Compare bar with 3 products at bottom of /shop: 10/10
+- Compare page with 3 products in table: 9/10
+- Build-routine page (interactive): 9/10
+- Wishlist toast "Saved to wishlist · Peptide Recovery Serum · 30ml": confirmed
+- Back-to-top button visible after scroll: 10/10
+- Quiz flow end-to-end: 0 errors, navigates to /diagnostic/results correctly
+- Search overlay with 'retinal' query: 10/10 (Retinal Renewal + Complete Barrier
+  System + Retinal ingredient returned)
+- 0 console errors / hydration errors on homepage scroll + PDP
+- Lint: clean (0 errors, 0 warnings)
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce (5 commits on main now)
+- New routes: /compare, /build-routine (both in footer + mobile nav + sitemap)
+- New stores: src/lib/commerce/compare-store.ts
+- New components: compare-button, compare-bar, back-to-top, scroll-progress
+- All 21 deployed routes return 200 OK
+- 0 lint errors / 0 lint warnings
+
+Unresolved / next-phase opportunities:
+- Add real product video assets to PDP galleries (currently image-only — brief calls for video)
+- Implement AVIF/WebP derivatives for static export (currently unoptimized PNGs)
+- Wire Shopify Storefront API provider when credentials available
+- Build out account UI (sign-in form is concept-only)
+- Add a "find my shade/texture" interactive recommender for color cosmetics (if catalog expands)
+- Consider A/B test scaffolding for CTA copy variants
+- Add keyboard shortcut help overlay (Cmd+/ ?) since Cmd+K search + Cmd+. cart are now available
+- Consider exporting the cart/wishlist/compare state via a "share" link (URL-encoded)
+- Add product video for hero (currently parallax image only)
