@@ -4,41 +4,42 @@ import * as React from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { img } from "@/lib/img";
 
 const CONCERNS = [
   {
     label: "Barrier",
     slug: "barrier",
     description: "Reinforce the protective lipid matrix with ceramides, panthenol and ectoin.",
-    visual: "/images/texture-cream.png",
+    visual: img("/images/texture-cream.png"),
     stats: "CERAMIDES 3:1:1 · ECTOIN 1%",
   },
   {
     label: "Texture",
     slug: "texture",
     description: "Overnight retinaldehyde refines surface texture and softens visible lines.",
-    visual: "/images/texture-gel.png",
+    visual: img("/images/texture-gel.png"),
     stats: "RETINAL 0.1% · NIACINAMIDE 4%",
   },
   {
     label: "Pigmentation",
     slug: "dark-spots",
     description: "15% L-ascorbic acid visibly evens tone and brightens dullness.",
-    visual: "/images/texture-water.png",
+    visual: img("/images/texture-water.png"),
     stats: "L-AA 15% · FERULIC 0.5%",
   },
   {
     label: "Dryness",
     slug: "dryness",
     description: "Humectants, emollients and overnight occlusion for visible plumpness.",
-    visual: "/images/texture-serum-droplet.png",
+    visual: img("/images/texture-serum-droplet.png"),
     stats: "SQUALANE · PANTHENOL · GLYCERIN",
   },
   {
     label: "Fine Lines",
     slug: "fine-lines",
     description: "Signal peptides and retinal support skin's own structural processes.",
-    visual: "/images/ingredient-laboratory.png",
+    visual: img("/images/ingredient-laboratory.png"),
     stats: "PEPTIDE COMPLEX · RETINAL 0.1%",
   },
 ];

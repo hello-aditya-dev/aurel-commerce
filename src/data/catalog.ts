@@ -1,4 +1,5 @@
 import type { Product, Bundle, Collection, Ingredient } from "@/types/commerce";
+import { img } from "@/lib/img";
 
 // ============================================================================
 // AUREL INGREDIENT LIBRARY
@@ -14,7 +15,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Modern cleansing, exfoliation and climate stress deplete ceramides faster than the skin replaces them. Replenishing them restores barrier integrity.",
     compatibility: "Pairs with nearly all actives. Stable across pH ranges.",
-    image: "/images/ingredient-ceramides.png",
+    image: img("/images/ingredient-ceramides.png"),
   },
   {
     slug: "peptides",
@@ -26,7 +27,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Peptides are well-tolerated and support the skin's own collagen-related processes without the irritation of stronger actives.",
     compatibility: "Avoid simultaneous use with strong AHAs in the same step.",
-    image: "/images/ingredient-laboratory.png",
+    image: img("/images/ingredient-laboratory.png"),
   },
   {
     slug: "ectoin",
@@ -38,7 +39,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Ectoin visibly reduces the impact of environmental stress on the skin and improves hydration and comfort, especially for reactive skin.",
     compatibility: "Gentle; compatible with retinoids and exfoliating acids.",
-    image: "/images/ingredient-botanical.png",
+    image: img("/images/ingredient-botanical.png"),
   },
   {
     slug: "retinal",
@@ -51,7 +52,7 @@ export const ingredients: Ingredient[] = [
       "Retinal at 0.1% supports skin renewal, texture refinement and the visible softening of fine lines without retinol's signature flaring.",
     compatibility:
       "Use in PM. Introduce gradually. Avoid combining with vitamin C in the same step.",
-    image: "/images/ingredient-laboratory.png",
+    image: img("/images/ingredient-laboratory.png"),
   },
   {
     slug: "niacinamide",
@@ -63,7 +64,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Few actives are as multi-functional and as well-tolerated across skin types. It is foundational in a barrier-first routine.",
     compatibility: "Pairs well with retinoids, hyaluronic acid and ceramides.",
-    image: "/images/ingredient-ceramides.png",
+    image: img("/images/ingredient-ceramides.png"),
   },
   {
     slug: "vitamin-c",
@@ -75,7 +76,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "A morning antioxidant step is one of the most defensible choices in modern skincare. Stabilised at low pH for efficacy.",
     compatibility: "Use in AM. Best separated from retinoids and strong acids.",
-    image: "/images/ingredient-botanical.png",
+    image: img("/images/ingredient-botanical.png"),
   },
   {
     slug: "panthenol",
@@ -87,7 +88,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Panthenol is one of the most reliable comfort ingredients for compromised, reactive or post-treatment skin.",
     compatibility: "Universally compatible.",
-    image: "/images/ingredient-botanical.png",
+    image: img("/images/ingredient-botanical.png"),
   },
   {
     slug: "squalane",
@@ -99,7 +100,7 @@ export const ingredients: Ingredient[] = [
     whyWeUseIt:
       "Plant-derived squalane is light, non-comedogenic and absorbs cleanly — ideal across skin types.",
     compatibility: "Universally compatible.",
-    image: "/images/texture-cream.png",
+    image: img("/images/texture-cream.png"),
   },
 ];
 
@@ -397,10 +398,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 612,
     media: [
-      { src: "/images/product-cleanser.png", alt: "Barrier Reset Cleanser in frosted glass pump bottle", kind: "packshot" },
-      { src: "/images/texture-gel.png", alt: "Gel-to-milk texture of the cleanser", kind: "texture" },
-      { src: "/images/editorial-routine.png", alt: "Cleanser in a calm bathroom routine moment", kind: "lifestyle" },
-      { src: "/images/product-system.png", alt: "Cleanser within the AUREL system", kind: "environment" },
+      { src: img("/images/product-cleanser.png"), alt: "Barrier Reset Cleanser in frosted glass pump bottle", kind: "packshot" },
+      { src: img("/images/texture-gel.png"), alt: "Gel-to-milk texture of the cleanser", kind: "texture" },
+      { src: img("/images/editorial-routine.png"), alt: "Cleanser in a calm bathroom routine moment", kind: "lifestyle" },
+      { src: img("/images/product-system.png"), alt: "Cleanser within the AUREL system", kind: "environment" },
     ],
     subscriptionEligible: true,
     bestseller: true,
@@ -448,9 +449,9 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 284,
     media: [
-      { src: "/images/product-c15-serum.png", alt: "C15 Antioxidant Serum in amber dropper bottle", kind: "packshot" },
-      { src: "/images/texture-serum-droplet.png", alt: "A single serum droplet at the tip of the glass dropper", kind: "texture" },
-      { src: "/images/editorial-stone.png", alt: "Serum bottle resting on raw stone", kind: "environment" },
+      { src: img("/images/product-c15-serum.png"), alt: "C15 Antioxidant Serum in amber dropper bottle", kind: "packshot" },
+      { src: img("/images/texture-serum-droplet.png"), alt: "A single serum droplet at the tip of the glass dropper", kind: "texture" },
+      { src: img("/images/editorial-stone.png"), alt: "Serum bottle resting on raw stone", kind: "environment" },
     ],
     subscriptionEligible: true,
     bestseller: true,
@@ -499,10 +500,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 428,
     media: [
-      { src: "/images/product-peptide-serum.png", alt: "Peptide Recovery Serum in frosted glass dropper bottle", kind: "packshot" },
-      { src: "/images/texture-serum-droplet.png", alt: "Serum droplet at the tip of the glass dropper", kind: "texture" },
-      { src: "/images/editorial-routine.png", alt: "Serum within a calm bathroom routine", kind: "lifestyle" },
-      { src: "/images/product-system.png", alt: "Peptide Recovery Serum within the AUREL system", kind: "environment" },
+      { src: img("/images/product-peptide-serum.png"), alt: "Peptide Recovery Serum in frosted glass dropper bottle", kind: "packshot" },
+      { src: img("/images/texture-serum-droplet.png"), alt: "Serum droplet at the tip of the glass dropper", kind: "texture" },
+      { src: img("/images/editorial-routine.png"), alt: "Serum within a calm bathroom routine", kind: "lifestyle" },
+      { src: img("/images/product-system.png"), alt: "Peptide Recovery Serum within the AUREL system", kind: "environment" },
     ],
     subscriptionEligible: true,
     hero: true,
@@ -553,9 +554,9 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 319,
     media: [
-      { src: "/images/product-retinal.png", alt: "Retinal Renewal 0.1 in dark amber dropper bottle", kind: "packshot" },
-      { src: "/images/texture-serum-droplet.png", alt: "Retinal serum droplet", kind: "texture" },
-      { src: "/images/editorial-stone.png", alt: "Retinal bottle on raw stone", kind: "environment" },
+      { src: img("/images/product-retinal.png"), alt: "Retinal Renewal 0.1 in dark amber dropper bottle", kind: "packshot" },
+      { src: img("/images/texture-serum-droplet.png"), alt: "Retinal serum droplet", kind: "texture" },
+      { src: img("/images/editorial-stone.png"), alt: "Retinal bottle on raw stone", kind: "environment" },
     ],
     subscriptionEligible: true,
     isNew: true,
@@ -602,9 +603,9 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 514,
     media: [
-      { src: "/images/product-recovery-cream.png", alt: "Ceramide Recovery Cream in frosted glass jar", kind: "packshot" },
-      { src: "/images/texture-cream.png", alt: "Cream texture swirled on glass", kind: "texture" },
-      { src: "/images/editorial-routine.png", alt: "Cream in a bathroom routine moment", kind: "lifestyle" },
+      { src: img("/images/product-recovery-cream.png"), alt: "Ceramide Recovery Cream in frosted glass jar", kind: "packshot" },
+      { src: img("/images/texture-cream.png"), alt: "Cream texture swirled on glass", kind: "texture" },
+      { src: img("/images/editorial-routine.png"), alt: "Cream in a bathroom routine moment", kind: "lifestyle" },
     ],
     subscriptionEligible: true,
     bestseller: true,
@@ -651,9 +652,9 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 372,
     media: [
-      { src: "/images/product-spf.png", alt: "Daily Mineral SPF 50 in frosted squeeze tube", kind: "packshot" },
-      { src: "/images/texture-gel.png", alt: "SPF texture on glass", kind: "texture" },
-      { src: "/images/editorial-routine.png", alt: "SPF in a calm bathroom routine", kind: "lifestyle" },
+      { src: img("/images/product-spf.png"), alt: "Daily Mineral SPF 50 in frosted squeeze tube", kind: "packshot" },
+      { src: img("/images/texture-gel.png"), alt: "SPF texture on glass", kind: "texture" },
+      { src: img("/images/editorial-routine.png"), alt: "SPF in a calm bathroom routine", kind: "lifestyle" },
     ],
     subscriptionEligible: true,
     bestseller: true,
@@ -700,9 +701,9 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 198,
     media: [
-      { src: "/images/product-overnight-mask.png", alt: "Overnight Barrier Mask in frosted glass jar", kind: "packshot" },
-      { src: "/images/texture-cream.png", alt: "Mask texture", kind: "texture" },
-      { src: "/images/editorial-stone.png", alt: "Mask jar on stone", kind: "environment" },
+      { src: img("/images/product-overnight-mask.png"), alt: "Overnight Barrier Mask in frosted glass jar", kind: "packshot" },
+      { src: img("/images/texture-cream.png"), alt: "Mask texture", kind: "texture" },
+      { src: img("/images/editorial-stone.png"), alt: "Mask jar on stone", kind: "environment" },
     ],
     subscriptionEligible: true,
     isNew: true,
@@ -749,9 +750,9 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 142,
     media: [
-      { src: "/images/product-system.png", alt: "The Complete Barrier System — five AUREL products together", kind: "packshot" },
-      { src: "/images/editorial-stone.png", alt: "System on raw stone", kind: "environment" },
-      { src: "/images/texture-water.png", alt: "Water droplets on glass — AUREL sensory detail", kind: "texture" },
+      { src: img("/images/product-system.png"), alt: "The Complete Barrier System — five AUREL products together", kind: "packshot" },
+      { src: img("/images/editorial-stone.png"), alt: "System on raw stone", kind: "environment" },
+      { src: img("/images/texture-water.png"), alt: "Water droplets on glass — AUREL sensory detail", kind: "texture" },
     ],
     subscriptionEligible: true,
     badge: "Save $36",
@@ -770,7 +771,7 @@ export const bundles: Bundle[] = [
     price: 124,
     compareAt: 134,
     productSlugs: ["barrier-reset-cleanser", "peptide-recovery-serum", "daily-mineral-spf-50"],
-    image: "/images/product-system.png",
+    image: img("/images/product-system.png"),
     description:
       "A three-piece foundation routine for first-time AUREL customers. Cleanse, treat and protect — without retinal or vitamin C.",
   },
@@ -781,7 +782,7 @@ export const bundles: Bundle[] = [
     price: 142,
     compareAt: 152,
     productSlugs: ["barrier-reset-cleanser", "c15-antioxidant-serum", "ceramide-recovery-cream", "daily-mineral-spf-50"],
-    image: "/images/product-system.png",
+    image: img("/images/product-system.png"),
     description:
       "A morning-focused routine built around 15% L-ascorbic acid, barrier support and mineral SPF — for visible brightness and even tone.",
   },
@@ -792,7 +793,7 @@ export const bundles: Bundle[] = [
     price: 168,
     compareAt: 188,
     productSlugs: ["barrier-reset-cleanser", "peptide-recovery-serum", "retinal-renewal-0-1", "overnight-barrier-mask"],
-    image: "/images/product-system.png",
+    image: img("/images/product-system.png"),
     description:
       "A buffered retinal protocol for overnight renewal. The peptide serum and barrier mask cushion retinal so even reactive skin can tolerate it.",
   },
@@ -810,7 +811,7 @@ export const bundles: Bundle[] = [
       "ceramide-recovery-cream",
       "daily-mineral-spf-50",
     ],
-    image: "/images/product-system.png",
+    image: img("/images/product-system.png"),
     description:
       "The complete barrier-first routine — five full-size products engineered to work as one sequence. Save $36 versus buying individually.",
     steps: [
@@ -907,7 +908,7 @@ export const journalArticles: JournalArticle[] = [
     category: "Barrier",
     date: "2025-08-14",
     readTime: "6 min read",
-    hero: "/images/editorial-skin-macro.png",
+    hero: img("/images/editorial-skin-macro.png"),
     body: [
       "The skin barrier is the outermost layer of the epidermis — a thin matrix of corneocytes embedded in a lipid mortar of ceramides, cholesterol and free fatty acids. Its job is simple and unforgiving: keep water in, keep the outside world out.",
       "When the barrier is intact, skin looks calm, even and hydrated. When it is compromised — by over-cleansing, harsh actives, climate, stress or hard water — water escapes, irritants enter, and skin becomes visibly reactive, dry and dull.",
@@ -924,7 +925,7 @@ export const journalArticles: JournalArticle[] = [
     category: "Actives",
     date: "2025-07-22",
     readTime: "8 min read",
-    hero: "/images/ingredient-laboratory.png",
+    hero: img("/images/ingredient-laboratory.png"),
     body: [
       "Retinol and retinal are both vitamin A derivatives. To become active in the skin, both must convert to retinoic acid. Retinol converts in two steps. Retinal converts in one.",
       "That single step difference has two practical consequences. First, retinal is meaningfully faster at producing visible results — typically by a factor of around ten, in equivalent concentrations. Second, retinal is, for most users, less irritating than retinol at the same effective concentration.",
@@ -941,7 +942,7 @@ export const journalArticles: JournalArticle[] = [
     category: "Routine",
     date: "2025-06-30",
     readTime: "5 min read",
-    hero: "/images/editorial-routine.png",
+    hero: img("/images/editorial-routine.png"),
     body: [
       "The skincare industry rewards excess — more products, more steps, more actives. But the skin barrier does not reward excess. It rewards restraint.",
       "A coherent routine has four steps: cleanse, treat, restore, protect. Each step has a single job. The treat step is where the active sits — vitamin C in the morning, retinal at night, a peptide serum for barrier support underneath both.",

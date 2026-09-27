@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getProductBySlug, getProductsBySlugs, getIngredientsForProduct, formatPrice, getBestsellers } from "@/lib/commerce/provider";
+import { getProductBySlug, getProductsBySlugs, getIngredientsForProduct, formatPrice, getBestsellers, products } from "@/lib/commerce/provider";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { AddToCartBridge } from "@/components/product/add-to-cart-bridge";
 import { MobileStickyPurchase } from "@/components/product/mobile-sticky-purchase";
@@ -12,6 +12,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Check, Truck, RefreshCw, ShieldCheck, Leaf, Beaker, Droplets } from "lucide-react";
 import { CompleteRoutine } from "@/components/product/complete-routine";
 import { ReviewsSection } from "@/components/product/reviews-section";
+
+export function generateStaticParams() {
+  return products.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -255,6 +259,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 }
 
 function benefitIcon(index: number) {
-  const icons = [<ShieldCheck className="h-5 w-5" />, <Droplets className="h-5 w-5" />, <Leaf className="h-5 w-5" />, <Beaker className="h-5 w-5" />];
+  const icons = [
+    <ShieldCheck key="shield" className="h-5 w-5" />,
+    <Droplets key="droplets" className="h-5 w-5" />,
+    <Leaf key="leaf" className="h-5 w-5" />,
+    <Beaker key="beaker" className="h-5 w-5" />,
+  ];
   return icons[index % icons.length];
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { img } from "@/lib/img";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
@@ -12,7 +13,7 @@ export function HeroSection() {
     <section className="relative w-full h-[100svh] min-h-[640px] overflow-hidden bg-bone-deep">
       {/* Background image */}
       <Image
-        src="/images/hero-campaign.png"
+        src={img("/images/hero-campaign.png")}
         alt="AUREL serum bottle on warm stone, soft morning light"
         fill
         priority

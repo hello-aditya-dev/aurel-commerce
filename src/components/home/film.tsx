@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { img } from "@/lib/img";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -24,7 +25,7 @@ export function FilmSection() {
         className="absolute inset-0"
       >
         <Image
-          src="/images/method-film.png"
+          src={img("/images/method-film.png")}
           alt="AUREL serum bottle on wet stone — brand film still"
           fill
           sizes="100vw"

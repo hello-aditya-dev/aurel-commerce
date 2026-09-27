@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { CollectionGrid } from "@/components/commerce/collection-grid";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -9,7 +10,6 @@ export const metadata = {
 export default function ShopPage() {
   return (
     <>
-      {/* Editorial header */}
       <section className="border-b border-border">
         <div className="container-aurel py-14 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -38,7 +38,9 @@ export default function ShopPage() {
         </div>
       </section>
 
-      <CollectionGrid />
+      <Suspense fallback={<div className="container-aurel py-20" />}>
+        <CollectionGrid />
+      </Suspense>
     </>
   );
 }

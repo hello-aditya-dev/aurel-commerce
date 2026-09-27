@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { img } from "@/lib/img";
 
 const STEPS = [
   {
@@ -10,28 +11,28 @@ const STEPS = [
     label: "Cleanse",
     productSlug: "barrier-reset-cleanser",
     productName: "Barrier Reset Cleanser",
-    visual: "/images/product-cleanser.png",
+    visual: img("/images/product-cleanser.png"),
   },
   {
     n: "02",
     label: "Treat",
     productSlug: "peptide-recovery-serum",
     productName: "Peptide Recovery Serum",
-    visual: "/images/product-peptide-serum.png",
+    visual: img("/images/product-peptide-serum.png"),
   },
   {
     n: "03",
     label: "Restore",
     productSlug: "ceramide-recovery-cream",
     productName: "Ceramide Recovery Cream",
-    visual: "/images/product-recovery-cream.png",
+    visual: img("/images/product-recovery-cream.png"),
   },
   {
     n: "04",
     label: "Protect",
     productSlug: "daily-mineral-spf-50",
     productName: "Daily Mineral SPF 50",
-    visual: "/images/product-spf.png",
+    visual: img("/images/product-spf.png"),
   },
 ];
 

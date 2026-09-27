@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { img } from "@/lib/img";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -39,7 +40,7 @@ export default function AboutPage() {
         <Reveal>
           <div className="relative aspect-[16/9] md:aspect-[2/1] overflow-hidden bg-muted">
             <Image
-              src="/images/editorial-stone.png"
+              src={img("/images/editorial-stone.png")}
               alt="AUREL serum on raw mineral stone"
               fill
               sizes="100vw"

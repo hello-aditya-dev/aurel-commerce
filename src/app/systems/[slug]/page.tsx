@@ -2,10 +2,14 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getBundleBySlug, getProductsBySlugs, formatPrice } from "@/lib/commerce/provider";
+import { getBundleBySlug, getProductsBySlugs, formatPrice, bundles } from "@/lib/commerce/provider";
 import { BundleAddButton } from "@/components/commerce/bundle-add-button";
 import { Reveal } from "@/components/motion/reveal";
 import { Check } from "lucide-react";
+
+export function generateStaticParams() {
+  return bundles.map((b) => ({ slug: b.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

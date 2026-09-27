@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { img } from "@/lib/img";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/motion/reveal";
@@ -46,7 +47,7 @@ export default function ApproachPage() {
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={0.1}>
               <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                <Image src="/images/texture-cream.png" alt="Ceramide cream texture" fill sizes="50vw" className="object-cover" />
+                <Image src={img("/images/texture-cream.png")} alt="Ceramide cream texture" fill sizes="50vw" className="object-cover" />
               </div>
             </Reveal>
           </div>
@@ -76,7 +77,7 @@ export default function ApproachPage() {
             <div className="md:col-span-5 md:order-1">
               <Reveal delay={0.1}>
                 <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                  <Image src="/images/ingredient-laboratory.png" alt="Laboratory composition" fill sizes="50vw" className="object-cover" />
+                  <Image src={img("/images/ingredient-laboratory.png")} alt="Laboratory composition" fill sizes="50vw" className="object-cover" />
                 </div>
               </Reveal>
             </div>
@@ -107,7 +108,7 @@ export default function ApproachPage() {
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={0.1}>
               <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                <Image src="/images/editorial-routine.png" alt="Bathroom routine moment" fill sizes="50vw" className="object-cover" />
+                <Image src={img("/images/editorial-routine.png")} alt="Bathroom routine moment" fill sizes="50vw" className="object-cover" />
               </div>
             </Reveal>
           </div>

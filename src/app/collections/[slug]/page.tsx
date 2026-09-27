@@ -1,9 +1,14 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import { getCollectionBySlug } from "@/lib/commerce/provider";
+import { getCollectionBySlug, collections } from "@/lib/commerce/provider";
 import { CollectionGrid } from "@/components/commerce/collection-grid";
 import { Reveal } from "@/components/motion/reveal";
+
+export function generateStaticParams() {
+  return collections.map((c) => ({ slug: c.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -47,7 +52,9 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
         </div>
       </section>
 
-      <CollectionGrid collectionSlug={slug} />
+      <Suspense fallback={<div className="container-aurel py-20" />}>
+        <CollectionGrid collectionSlug={slug} />
+      </Suspense>
     </>
   );
 }

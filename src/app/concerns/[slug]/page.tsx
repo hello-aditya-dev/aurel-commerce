@@ -17,6 +17,10 @@ const CONCERN_LABELS: Record<Concern, { label: string; blurb: string }> = {
   breakouts: { label: "Breakouts", blurb: "Niacinamide, gentle cleansing and barrier maintenance." },
 };
 
+export function generateStaticParams() {
+  return Object.keys(CONCERN_LABELS).map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const meta = CONCERN_LABELS[slug as Concern];

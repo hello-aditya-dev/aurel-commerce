@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { products, ingredients, collections, journalArticles } from "@/data/catalog";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || "https://aurel.example.com";
   const now = new Date();

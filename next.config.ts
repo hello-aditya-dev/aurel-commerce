@@ -16,9 +16,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   reactStrictMode: false,
   images: {
     // GitHub Pages static export cannot run the optimization server.

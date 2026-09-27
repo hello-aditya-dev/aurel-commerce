@@ -5,12 +5,13 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { getAllIngredients } from "@/lib/commerce/provider";
+import { img } from "@/lib/img";
 
 const FEATURED = [
-  { slug: "ceramides", visual: "/images/ingredient-ceramides.png" },
-  { slug: "peptides", visual: "/images/ingredient-laboratory.png" },
-  { slug: "ectoin", visual: "/images/ingredient-botanical.png" },
-  { slug: "retinal", visual: "/images/ingredient-laboratory.png" },
+  { slug: "ceramides", visual: img("/images/ingredient-ceramides.png") },
+  { slug: "peptides", visual: img("/images/ingredient-laboratory.png") },
+  { slug: "ectoin", visual: img("/images/ingredient-botanical.png") },
+  { slug: "retinal", visual: img("/images/ingredient-laboratory.png") },
 ];
 
 export function IngredientStorySection() {

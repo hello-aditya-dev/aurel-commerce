@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteShell } from "@/components/layout/site-shell";
 import { cn } from "@/lib/utils";
+import { img } from "@/lib/img";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
       "Clinical actives. Botanical intelligence. Skin, restored.",
     images: [
       {
-        url: "/images/og-card.png",
+        url: img("/images/og-card.png"),
         width: 1344,
         height: 768,
         alt: "AUREL — Clinical skincare for stressed modern skin",
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
     title: "AUREL — Clinical Skincare for Stressed Modern Skin",
     description:
       "Clinical actives. Botanical intelligence. Skin, restored.",
-    images: ["/images/og-card.png"],
+    images: [img("/images/og-card.png")],
   },
   icons: {
     icon: [
