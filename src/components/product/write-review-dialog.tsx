@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Star, X, Check } from "lucide-react";
+import { Star, X, Check, Camera, ImagePlus } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useUserReviews } from "@/lib/commerce/user-reviews-store";
 import { track } from "@/lib/analytics";
@@ -39,7 +39,9 @@ export function WriteReviewDialog({
   const [author, setAuthor] = React.useState("");
   const [skinType, setSkinType] = React.useState<SkinType | "">("");
   const [ageRange, setAgeRange] = React.useState("");
+  const [photo, setPhoto] = React.useState<string | null>(null);
   const [err, setErr] = React.useState<string | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const reset = () => {
     setRating(0);
@@ -49,7 +51,28 @@ export function WriteReviewDialog({
     setAuthor("");
     setSkinType("");
     setAgeRange("");
+    setPhoto(null);
     setErr(null);
+  };
+
+  const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      setErr("Photo must be under 2MB.");
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      setErr("Please select an image file.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPhoto(reader.result as string);
+      setErr(null);
+      track("review_photo_add", { slug: product.slug });
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -68,12 +91,13 @@ export function WriteReviewDialog({
       date: new Date().toISOString().slice(0, 10),
       skinType: skinType || undefined,
       ageRange: ageRange || undefined,
-      verified: false, // user-submitted demo reviews are not "verified"
+      verified: false,
       helpful: 0,
+      photo: photo || undefined,
     };
 
     add(product.slug, review);
-    track("review_submit", { slug: product.slug, rating });
+    track("review_submit", { slug: product.slug, rating, hasPhoto: !!photo });
     toast("Review submitted", {
       description: "Thanks for sharing your experience.",
     });
@@ -184,6 +208,42 @@ export function WriteReviewDialog({
               maxLength={40}
               className="w-full bg-transparent border border-border focus:border-foreground outline-none p-3 text-sm transition-colors"
             />
+          </div>
+
+          {/* Photo upload (optional) */}
+          <div>
+            <label className="text-eyebrow text-muted-foreground block mb-3">Photo (optional)</label>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoSelect}
+              className="hidden"
+              aria-label="Upload a photo with your review"
+            />
+            {photo ? (
+              <div className="relative inline-block">
+                <img src={photo} alt="Review photo preview" className="h-24 w-24 object-cover border border-border" />
+                <button
+                  type="button"
+                  onClick={() => { setPhoto(null); if (fileInputRef.current) fileInputRef.current.value = ""; }}
+                  className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-foreground text-background flex items-center justify-center"
+                  aria-label="Remove photo"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="flex items-center gap-2 h-10 px-4 border border-dashed border-border hover:border-foreground/50 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ImagePlus className="h-3.5 w-3.5" />
+                Add a photo
+              </button>
+            )}
+            <p className="text-[0.625rem] text-muted-foreground mt-1.5">Max 2MB · stored in your browser only</p>
           </div>
 
           {/* Skin type + age range */}

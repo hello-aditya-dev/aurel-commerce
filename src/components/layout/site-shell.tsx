@@ -13,6 +13,7 @@ import { KeyboardHelp } from "@/components/layout/keyboard-help";
 import { QuickViewProvider } from "@/components/commerce/quick-view";
 import { CartLoader } from "@/components/commerce/cart-loader";
 import { WishlistLoader } from "@/components/commerce/wishlist-loader";
+import { RoutineLoader } from "@/components/commerce/routine-loader";
 import { useCart } from "@/lib/commerce/cart-store";
 import { Suspense } from "react";
 
@@ -51,6 +52,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <Suspense fallback={null}>
           <CartLoader />
           <WishlistLoader />
+          <RoutineLoader />
         </Suspense>
       </div>
     </QuickViewProvider>

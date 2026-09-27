@@ -49,6 +49,7 @@ export interface Review {
   ageRange?: string;
   verified: boolean;
   helpful: number;
+  photo?: string; // base64 data URL for user-submitted review photos
 }
 
 export interface FaqItem {

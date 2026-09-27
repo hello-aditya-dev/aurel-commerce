@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, Plus, X, ArrowRight, Trash2, Sparkles, Bookmark, FolderOpen } from "lucide-react";
+import { Check, Plus, X, ArrowRight, Trash2, Sparkles, Bookmark, FolderOpen, Share2 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { getAllProducts, formatPrice, getProductsBySlugs } from "@/lib/commerce/provider";
 import { useCart } from "@/lib/commerce/cart-store";
@@ -11,6 +11,8 @@ import { useSavedRoutines } from "@/lib/commerce/saved-routines-store";
 import { track } from "@/lib/analytics";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { encodeRoutineForShare } from "@/lib/commerce/share-routine";
+import { computeRoutineScore } from "@/lib/commerce/routine-score";
 import type { RoutineStep } from "@/types/commerce";
 
 const STEPS: { key: RoutineStep; label: string; description: string }[] = [
@@ -75,6 +77,33 @@ export default function BuildRoutinePage() {
     toast(`Loaded "${r.name}"`, {
       description: `${r.slugs.length} products loaded into the builder.`,
     });
+  };
+
+  const [sharedId, setSharedId] = React.useState<string | null>(null);
+  const shareRoutine = async (id: string) => {
+    const r = savedRoutines.find((x) => x.id === id);
+    if (!r) return;
+    const encoded = encodeRoutineForShare(r.name, r.slugs);
+    const base = window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "");
+    const url = `${base}/?routine=${encodeURIComponent(encoded)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setSharedId(id);
+      track("routine_share", { name: r.name, slugs: r.slugs.length });
+      toast("Routine link copied", {
+        description: "Share it anywhere. The recipient will get this routine in their builder.",
+      });
+      setTimeout(() => setSharedId(null), 2500);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      setSharedId(id);
+      setTimeout(() => setSharedId(null), 2500);
+    }
   };
 
   const clearAll = () => {
@@ -232,6 +261,50 @@ export default function BuildRoutinePage() {
                     <span className="text-sm uppercase tracking-[0.14em]">Total</span>
                     <span className="font-serif text-2xl tabular-nums">{formatPrice(finalTotal)}</span>
                   </div>
+
+                  {/* Routine score */}
+                  {selectedProducts.length > 0 && (() => {
+                    const rs = computeRoutineScore(Array.from(selected));
+                    return (
+                      <div className="mt-4 p-4 border border-border bg-background">
+                        <div className="flex items-baseline justify-between mb-3">
+                          <span className="text-eyebrow text-muted-foreground">Routine score</span>
+                          <span className={cn(
+                            "font-serif text-lg",
+                            rs.score >= 85 ? "text-foreground" : rs.score >= 70 ? "text-foreground" : rs.score >= 50 ? "text-muted-foreground" : "text-muted-foreground"
+                          )}>
+                            {rs.score}/100 · {rs.label}
+                          </span>
+                        </div>
+                        <div className="h-1.5 bg-muted overflow-hidden rounded-full mb-3">
+                          <div
+                            className="h-full bg-foreground transition-all duration-700"
+                            style={{ width: `${rs.score}%` }}
+                          />
+                        </div>
+                        {rs.issues.length > 0 && (
+                          <ul className="space-y-1 mb-2">
+                            {rs.issues.map((issue, i) => (
+                              <li key={i} className="text-xs text-destructive flex items-start gap-1.5">
+                                <X className="h-3 w-3 mt-0.5 shrink-0" />
+                                {issue}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {rs.bonuses.length > 0 && (
+                          <ul className="space-y-1">
+                            {rs.bonuses.map((bonus, i) => (
+                              <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                                <Check className="h-3 w-3 mt-0.5 shrink-0 text-foreground" />
+                                {bonus}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    );
+                  })()}
                   <button
                     onClick={handleAddAll}
                     className="mt-6 w-full h-12 bg-foreground text-background text-xs uppercase tracking-[0.16em] hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
@@ -281,6 +354,13 @@ export default function BuildRoutinePage() {
                           <p className="text-[0.625rem] text-muted-foreground tabular-nums">
                             {r.slugs.length} products · {formatPrice(r.total)}
                           </p>
+                        </button>
+                        <button
+                          onClick={() => shareRoutine(r.id)}
+                          aria-label={`Share ${r.name}`}
+                          className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                        >
+                          {sharedId === r.id ? <Check className="h-3.5 w-3.5" /> : <Share2 className="h-3.5 w-3.5" />}
                         </button>
                         <button
                           onClick={() => { removeRoutine(r.id); toast("Routine removed"); }}

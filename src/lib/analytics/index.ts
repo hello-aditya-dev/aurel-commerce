@@ -26,7 +26,9 @@ export type CommerceEvent =
   | "qa_submit"
   | "qa_vote"
   | "compatibility_check"
-  | "routine_save";
+  | "routine_save"
+  | "routine_share"
+  | "review_photo_add";
 
 interface AnalyticsPayload {
   [key: string]: unknown;

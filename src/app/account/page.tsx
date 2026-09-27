@@ -285,6 +285,9 @@ function ReviewsTab({ byProduct, hydrated }: { byProduct: Record<string, any[]>;
               </div>
               <p className="font-serif text-sm font-medium">{review.title}</p>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{review.body}</p>
+              {review.photo && (
+                <img src={review.photo} alt="Review photo" className="mt-2 h-20 w-20 object-cover border border-border" />
+              )}
               <p className="text-[0.6875rem] text-muted-foreground mt-2 font-mono uppercase tracking-wider">
                 {review.date}
               </p>

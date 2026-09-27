@@ -181,6 +181,18 @@ function ReviewCard({
       </div>
       <h4 className="font-serif text-lg leading-tight mt-3">{review.title}</h4>
       <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{review.body}</p>
+      {review.photo && (
+        <div className="mt-4">
+          <img
+            src={review.photo}
+            alt={`${review.author}'s review photo`}
+            className="h-32 w-32 object-cover border border-border"
+          />
+          <p className="text-[0.625rem] text-muted-foreground mt-1.5 font-mono uppercase tracking-wider">
+            Customer photo
+          </p>
+        </div>
+      )}
       <div className="mt-5 flex items-center gap-4">
         <button
           onClick={onHelpful}
