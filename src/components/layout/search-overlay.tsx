@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Search, X, ArrowRight } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { searchAll } from "@/lib/commerce/provider";
 import { formatPrice } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
@@ -51,8 +51,13 @@ export function SearchOverlay() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-3xl p-0 top-[12vh] translate-y-0 gap-0 overflow-hidden bg-background">
+      <DialogContent
+        className="max-w-3xl p-0 top-[12vh] translate-y-0 gap-0 overflow-hidden bg-background"
+      >
         <DialogTitle className="sr-only">Search AUREL</DialogTitle>
+        <DialogDescription className="sr-only">
+          Search AUREL products, concerns, and ingredients. Type to filter results.
+        </DialogDescription>
         <div className="flex items-center gap-3 px-6 py-5 border-b border-border">
           <Search className="h-5 w-5 text-muted-foreground" />
           <input

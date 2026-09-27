@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
 import { Wordmark } from "./wordmark";
+import { AnnouncementBar } from "./announcement-bar";
 import { useCart } from "@/lib/commerce/cart-store";
 import { useWishlist } from "@/lib/commerce/wishlist-store";
 import { cn } from "@/lib/utils";
@@ -71,10 +72,8 @@ export function Header() {
       )}
       onMouseLeave={() => setMega(null)}
     >
-      {/* Announcement bar */}
-      <div className="bg-foreground text-background text-center py-2 text-[0.6875rem] tracking-[0.14em] uppercase">
-        <span className="font-mono">Complimentary shipping over $75 · Subscribe &amp; save 15%</span>
-      </div>
+      {/* Announcement bar — rotating messages */}
+      <AnnouncementBar />
 
       <div className="container-aurel">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 md:h-20">

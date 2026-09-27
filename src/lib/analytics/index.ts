@@ -17,7 +17,9 @@ export type CommerceEvent =
   | "compare_add"
   | "compare_remove"
   | "routine_builder_save"
-  | "back_to_top";
+  | "back_to_top"
+  | "quick_view_open"
+  | "share_cart";
 
 interface AnalyticsPayload {
   [key: string]: unknown;

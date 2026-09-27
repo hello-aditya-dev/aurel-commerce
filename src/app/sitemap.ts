@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wishlist",
     "/compare",
     "/build-routine",
+    "/recently-viewed",
   ].map((p) => ({ url: `${base}${p}`, lastModified: now, changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.7 }));
 
   const productPages = products.map((p) => ({

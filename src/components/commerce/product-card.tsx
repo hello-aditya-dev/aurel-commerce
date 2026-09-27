@@ -12,6 +12,7 @@ import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { WishlistButton } from "@/components/commerce/wishlist-button";
 import { CompareButton } from "@/components/commerce/compare-button";
+import { useQuickView } from "@/components/commerce/quick-view";
 
 export function ProductCard({
   product,
@@ -23,6 +24,7 @@ export function ProductCard({
   index?: number;
 }) {
   const add = useCart((s) => s.add);
+  const quickView = useQuickView();
   const reduce = useReducedMotion();
   const primary = product.media[0];
   const secondary = product.media[1] ?? product.media[0];
@@ -83,8 +85,8 @@ export function ProductCard({
           <CompareButton slug={product.slug} variant="icon" />
         </div>
 
-        {/* Quick add (desktop hover) */}
-        <div className="hidden md:block absolute bottom-3 left-3 right-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+        {/* Quick add + Quick view (desktop hover) */}
+        <div className="hidden md:flex absolute bottom-3 left-3 right-3 gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -92,11 +94,25 @@ export function ProductCard({
               track("add_to_cart", { slug: product.slug, source: "quick_add_card" });
               add(product, { variant: "one-time" });
             }}
-            className="w-full h-10 bg-background/95 backdrop-blur text-foreground text-xs uppercase tracking-[0.14em] flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors"
+            className="flex-1 h-10 bg-background/95 backdrop-blur text-foreground text-xs uppercase tracking-[0.14em] flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors"
           >
             <Plus className="h-3.5 w-3.5" />
             Quick add
           </button>
+          {quickView && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                track("quick_view_open", { slug: product.slug, source: "product_card" });
+                quickView.open(product.slug);
+              }}
+              aria-label={`Quick view ${product.name}`}
+              className="h-10 px-3 bg-background/95 backdrop-blur text-foreground text-xs uppercase tracking-[0.14em] hover:bg-foreground hover:text-background transition-colors"
+            >
+              View
+            </button>
+          )}
         </div>
       </div>
 
@@ -119,17 +135,31 @@ export function ProductCard({
           <span className="tabular-nums">{product.rating.toFixed(1)} · {product.reviewCount}</span>
         </div>
 
-        {/* Mobile quick add — always visible */}
-        <button
-          onClick={() => {
-            track("add_to_cart", { slug: product.slug, source: "quick_add_card_mobile" });
-            add(product, { variant: "one-time" });
-          }}
-          className="md:hidden mt-3 w-full h-10 border border-foreground/30 text-foreground text-xs uppercase tracking-[0.14em] flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors"
-        >
-          <Plus className="h-3.5 w-3.5" />
-          Add to bag
-        </button>
+        {/* Mobile quick add + view — always visible */}
+        <div className="md:hidden mt-3 flex gap-2">
+          <button
+            onClick={() => {
+              track("add_to_cart", { slug: product.slug, source: "quick_add_card_mobile" });
+              add(product, { variant: "one-time" });
+            }}
+            className="flex-1 h-10 border border-foreground/30 text-foreground text-xs uppercase tracking-[0.14em] flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors"
+          >
+            <Plus className="h-3.5 w-3.5" />
+            Add to bag
+          </button>
+          {quickView && (
+            <button
+              onClick={() => {
+                track("quick_view_open", { slug: product.slug, source: "product_card_mobile" });
+                quickView.open(product.slug);
+              }}
+              aria-label={`Quick view ${product.name}`}
+              className="h-10 px-3 border border-foreground/30 text-foreground text-xs uppercase tracking-[0.14em] hover:bg-foreground hover:text-background transition-colors"
+            >
+              View
+            </button>
+          )}
+        </div>
       </div>
     </motion.article>
   );

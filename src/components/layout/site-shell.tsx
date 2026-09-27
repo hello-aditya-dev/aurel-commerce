@@ -9,7 +9,11 @@ import { MobileNav } from "./mobile-nav";
 import { CompareBar } from "@/components/commerce/compare-bar";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
+import { KeyboardHelp } from "@/components/layout/keyboard-help";
+import { QuickViewProvider } from "@/components/commerce/quick-view";
+import { CartLoader } from "@/components/commerce/cart-loader";
 import { useCart } from "@/lib/commerce/cart-store";
+import { Suspense } from "react";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const openCart = useCart((s) => s.open);
@@ -31,16 +35,22 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, [openCart]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <ScrollProgress />
-      <Header />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <CartDrawer />
-      <SearchOverlay />
-      <MobileNav />
-      <CompareBar />
-      <BackToTop />
-    </div>
+    <QuickViewProvider>
+      <div className="flex min-h-screen flex-col bg-background">
+        <ScrollProgress />
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <CartDrawer />
+        <SearchOverlay />
+        <MobileNav />
+        <CompareBar />
+        <BackToTop />
+        <KeyboardHelp />
+        <Suspense fallback={null}>
+          <CartLoader />
+        </Suspense>
+      </div>
+    </QuickViewProvider>
   );
 }

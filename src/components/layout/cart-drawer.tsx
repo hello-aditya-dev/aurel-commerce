@@ -3,10 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useCart, FREE_SHIPPING_THRESHOLD } from "@/lib/commerce/cart-store";
 import { Button } from "@/components/ui/button";
-import { Plus, Minus, X, ArrowRight, ShoppingBag } from "lucide-react";
+import { Plus, Minus, X, ArrowRight, ShoppingBag, Check, Share2 } from "lucide-react";
 import { formatPrice, getProductBySlug } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
@@ -37,6 +37,9 @@ export function CartDrawer() {
                 ({hasHydrated ? count : 0})
               </span>
             </SheetTitle>
+            <SheetDescription className="sr-only">
+              Shopping cart with {hasHydrated ? count : 0} items. Adjust quantities, remove items, or proceed to checkout.
+            </SheetDescription>
             <button
               onClick={close}
               aria-label="Close cart"
@@ -121,6 +124,7 @@ export function CartDrawer() {
               >
                 Checkout — {formatPrice(sub)}
               </Button>
+              <ShareCartButton lines={lines} />
               <Link
                 href="/shop"
                 onClick={close}
@@ -133,6 +137,56 @@ export function CartDrawer() {
         )}
       </SheetContent>
     </Sheet>
+  );
+}
+
+function ShareCartButton({ lines }: { lines: CartLine[] }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleShare = async () => {
+    if (lines.length === 0) return;
+    const { encodeCartForShare } = await import("@/lib/commerce/share-cart");
+    const encoded = encodeCartForShare(lines);
+    const base = window.location.origin + (process.env.NEXT_PUBLIC_BASE_PATH || "");
+    const url = `${base}/?cart=${encodeURIComponent(encoded)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      track("share_cart", { lines: lines.length, value: lines.reduce((s, l) => s + l.price * l.quantity, 0) });
+      toast("Cart link copied", {
+        description: "Share it anywhere. The recipient's bag will be pre-filled.",
+      });
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback for browsers without clipboard API
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleShare}
+      className="w-full h-10 border border-foreground/20 text-foreground text-xs uppercase tracking-[0.14em] hover:bg-foreground/5 transition-colors flex items-center justify-center gap-2"
+    >
+      {copied ? (
+        <>
+          <Check className="h-3.5 w-3.5" />
+          Link copied
+        </>
+      ) : (
+        <>
+          <Share2 className="h-3.5 w-3.5" />
+          Share cart
+        </>
+      )}
+    </button>
   );
 }
 

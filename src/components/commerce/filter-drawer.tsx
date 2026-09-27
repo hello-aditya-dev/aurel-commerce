@@ -1,6 +1,6 @@
 "use client";
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Concern, SkinType, Category } from "@/types/commerce";
@@ -60,6 +60,9 @@ export function FilterDrawer({
       <SheetContent side="bottom" className="h-[85vh] p-0 flex flex-col rounded-t-xl">
         <SheetHeader className="px-6 pt-5 pb-4 border-b border-border flex flex-row items-center justify-between">
           <SheetTitle className="font-serif text-xl">Filter</SheetTitle>
+          <SheetDescription className="sr-only">
+            Filter AUREL products by concern, skin type, product type, and price.
+          </SheetDescription>
           <button
             onClick={() => onOpenChange(false)}
             className="text-xs uppercase tracking-[0.14em] text-muted-foreground"
