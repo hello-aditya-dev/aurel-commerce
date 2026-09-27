@@ -59,3 +59,42 @@ Stage Summary:
   - Reprised the brand-statement dark-section pattern for the final CTA (bg-foreground text-background) for visual continuity with the rest of the site
   - Highlights use a subtle CSS grid overlay inside bg-muted plates to suggest "screen" content without fake screenshots
   - Page is NOT linked from header/footer consumer nav (per brief) — reachable only via direct URL /case-study
+
+---
+Task ID: deploy
+Agent: main
+Task: Build, verify, and deploy AUREL to GitHub Pages
+
+Work Log:
+- Generated 21 cohesive AI brand images (hero, 8 products, 4 textures, 3 ingredient macros, 3 editorial, OG card, method film)
+- Built full design system (Fraunces serif + Inter sans + JetBrains mono, mineral palette)
+- Implemented 8 products, 4 bundles, 4 collections, 8 ingredients, 3 journal articles
+- Built homepage (13 editorial sections), PDP, collection, shop, diagnostic quiz, routine results, ingredients, concerns, systems, journal, about, approach, faq, contact, case-study, search, account, 404, privacy/terms/accessibility
+- Built cart drawer with free-shipping progress + upsell, search overlay, mega menu, mobile nav
+- Set up Shopify-compatible commerce abstraction with mock provider + cart store (Zustand persist) + quiz store
+- Created README, ASSET-CREDITS, DESIGN-SYSTEM, COMMERCE-ARCHITECTURE docs
+- Configured next.config.ts to be env-aware (standalone for dev, export for GitHub Pages)
+- Added generateStaticParams to all dynamic routes + Suspense wrapping for useSearchParams
+- Added img() helper to prefix image paths with NEXT_PUBLIC_BASE_PATH
+- Created GitHub repo: hello-aditya-dev/aurel-commerce (public)
+- Pushed source code to main branch
+- Built static export and deployed to gh-pages branch
+- Verified via agent-browser: homepage renders 9/10, PDP 9/10, quiz 9/10 (VLM-verified)
+- Verified all images load with correct /aurel-commerce/ basePath prefix
+
+Stage Summary:
+- LIVE URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce
+- VLM ratings: Homepage 9/10, PDP 9/10, Quiz 9/10
+- All 21 images generated, deployed, and rendering correctly
+- Cart, quiz, search, filters all functional
+- Source code pushed (2 commits on main)
+- Deploy script: scripts/deploy-gh-pages.sh
+
+Unresolved / next-phase opportunities:
+- Wire Shopify Storefront API provider when credentials available
+- Add account/wishlist/order-history UI when auth backend exists
+- Add more journal articles (currently 3 — brief calls for more)
+- Add product video assets to PDP galleries (currently image-only)
+- Consider adding the product/bundle pages for "Complete Barrier System" product page (currently treated as system page)
+- Performance: implement image AVIF/WebP derivatives for static export (currently unoptimized PNGs)
