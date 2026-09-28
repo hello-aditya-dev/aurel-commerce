@@ -282,3 +282,6 @@ It can also happen if the client has a browser extension installed which messes 
 [00:57:47.980] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:57:48.548] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
 [00:57:53.655] Browser DEBUG   [analytics] add_to_cart {"slug":"barrier-reset-cleanser","source":"quick_add_card"}
+[01:01:45.033] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:01:45.436] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[01:01:50.247] Browser DEBUG   [analytics] add_to_cart {"slug":"barrier-reset-cleanser","source":"quick_add_card"}

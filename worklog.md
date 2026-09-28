@@ -690,3 +690,74 @@ Stage Summary:
 - All Chinese text/gibberish eliminated from imagery
 - Unique per-product textures across 5 priority PDPs
 - Repository organized (no root-level screenshots/debris)
+
+---
+Task ID: brand-identity-pass
+Agent: main
+Task: Final brand system, social identity & UI defect pass
+
+Work Log:
+1. DUPLICATE CART DRAWER X — ROOT CAUSE + FIX:
+   Root cause: src/components/ui/sheet.tsx SheetContent automatically rendered
+   <SheetPrimitive.Close> with <XIcon> on every sheet (lines 75-78). CartDrawer
+   ALSO had its own custom close button (lines 44-48). Result: two X icons.
+   Fix: Added showCloseButton?: boolean prop to SheetContent (same pattern as
+   DialogContent). CartDrawer + FilterDrawer pass showCloseButton={false}.
+
+2. ALL SHEET/DIALOG OVERLAYS AUDITED:
+   - cart-drawer.tsx (Sheet) — showCloseButton={false} ✅ (1 close button)
+   - filter-drawer.tsx (Sheet) — showCloseButton={false} ✅ (1 close button)
+   - search-overlay.tsx (Dialog) — showCloseButton={false} ✅ (1 close button)
+   - keyboard-help.tsx (Dialog) — showCloseButton={false} ✅ (1 close button)
+   - write-review-dialog.tsx (Dialog) — showCloseButton={false} ✅ (1 close button)
+   - product-qa-section.tsx (Dialog) — showCloseButton={false} ✅ (1 close button)
+   - quick-view.tsx (custom portal) — 1 close button, no duplicate ✅
+   - mobile-nav.tsx (custom overlay) — 1 close button, no duplicate ✅
+   Verified: cart drawer has exactly 1 close button via DOM inspection.
+
+3. BRAND IDENTITY ASSETS CREATED:
+   - public/brand/aurel-wordmark.svg (currentColor, scales to any size)
+   - public/brand/aurel-wordmark-light.svg
+   - public/brand/aurel-monogram.svg (geometric 'A' with crossbar)
+   - public/brand/aurel-monogram-light.svg
+   - public/favicon.svg (monogram on dark background, replaced generic Georgia A)
+   - public/favicon-16x16.png (generated via sharp)
+   - public/favicon-32x32.png
+   - public/apple-touch-icon.png (180x180)
+   - public/icon-192.png
+   - public/icon-512.png
+   - public/manifest.json (AUREL identity, theme_color, icons)
+
+4. FAVICON DEPLOYMENT URL:
+   https://hello-aditya-dev.github.io/aurel-commerce/favicon.svg — 200, image/svg+xml
+   All icon paths use img() helper for correct basePath resolution.
+
+5. OG IMAGE SYSTEM:
+   - public/images/og-default.jpg (1200x630) — composited via browser screenshot
+     with AUREL wordmark + tagline + product image. No AI text artifacts.
+   - public/images/og-case-study.jpg (1200x630) — dark variant for case study
+   Final og:image URL: https://hello-aditya-dev.github.io/aurel-commerce/images/og-default.jpg
+   Verified: HTTP 200, content-type: image/jpeg, resolves correctly.
+
+6. METADATA FIX — DOUBLED basePath:
+   Root cause: metadataBase included /aurel-commerce, and img() also added it.
+   Fix: metadataBase is now origin-only (https://hello-aditya-dev.github.io).
+
+7. BRAND DOCUMENTATION:
+   - docs/BRAND-SYSTEM.md created — complete identity system:
+     wordmark, monogram, colour, typography, product coding, photography,
+     packaging, tone of voice, digital application, social identity
+
+8. BUILD STATUS:
+   - TypeScript: 0 errors (no ignoreBuildErrors)
+   - ESLint: 0 errors, 0 warnings
+   - React Strict Mode: enabled
+   - Static export: builds successfully
+   - All 22 deployed routes: 200 OK
+
+Verification:
+- Cart drawer: exactly 1 close button (DOM-verified)
+- OG image URL: resolves to correct path, 200, image/jpeg
+- Favicon SVG: 200, image/svg+xml
+- Case study OG: separate image, correct URL
+- VLM: OG default shows AUREL text clearly; case study OG 9/10

@@ -9,4 +9,4 @@
 :HL["/aurel-commerce/images/case-quiz.png","image"]
 :HL["/aurel-commerce/images/case-cart.png","image"]
 :HL["/aurel-commerce/images/case-collection.png","image"]
-0:{"buildId":"TYYJ9SvB3E7f6lAqGjcrn","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"case-study","paramType":null,"paramKey":"case-study","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"NzO2Bs-zm_mHV4AvtM7CF","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"case-study","paramType":null,"paramKey":"case-study","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
