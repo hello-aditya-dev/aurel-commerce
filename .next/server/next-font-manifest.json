@@ -1,0 +1,187 @@
+{
+  "app": {
+    "[project]/src/app/_not-found/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/about/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/accessibility/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/account/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/approach/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/build-routine/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/case-study/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/collections/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/compare/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/compatibility/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/concerns/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/concerns/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/contact/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/diagnostic/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/diagnostic/results/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/faq/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/ingredients/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/ingredients/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/journal/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/journal/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/privacy/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/products/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/recently-viewed/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/search/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/shop/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/systems/[slug]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/systems/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/terms/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ],
+    "[project]/src/app/wishlist/page": [
+      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
+      "static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2",
+      "static/media/54fc36028e2bb174-s.p.a3b6b797.woff2",
+      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

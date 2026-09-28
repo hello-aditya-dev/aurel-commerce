@@ -634,3 +634,59 @@ Unresolved / next-phase opportunities:
 - Consider expanding the compatibility matrix with more ingredient pairs
 - Add multi-photo upload to reviews (currently 1 photo max)
 - Add routine score history (track score over time as user edits)
+
+---
+Task ID: final-polish (master prompt execution)
+Agent: main
+Task: Final premium art direction, asset, UX & production polish pass
+
+Work Log:
+- Comprehensive audit of entire repository
+- Fixed critical bugs:
+  1. Duplicate close controls in 4 Dialog components (search overlay, keyboard
+     help, write review, ask question) — added showCloseButton={false}
+  2. Removed typescript.ignoreBuildErrors from next.config — fixed all 4 TS
+     errors (CartLine type import, toast import, Product[] type guard)
+  3. Enabled reactStrictMode (was false)
+  4. Removed tracked .env from repository (kept locally)
+  5. Replaced all aurel.example.com placeholder URLs with real deployment URL
+     (in layout.tsx, sitemap.ts, robots.ts)
+  6. Fixed README placeholder (your-username → hello-aditya-dev)
+  7. Set git author to hello-aditya-dev <hi.aditya.dev@gmail.com>
+- Repository cleanup:
+  - Organized 96 QA screenshots from root into docs/qa/
+  - Removed tool-results directory
+  - Removed gen-images.log
+  - Updated tsconfig.json to exclude skills/examples/mini-services/tests/scripts
+- Image audit via VLM (all 21 images checked):
+  - product-recovery-cream: HAD CHINESE CHARACTERS '神经寡湿修复面糟' — CRITICAL
+  - product-peptide-serum: had text artifacts on packaging
+  - texture-gel: had visible text
+  - All other 18 images: clean (no text/gibberish) ✅
+- Image regeneration:
+  - Regenerated 3 broken images with text-free prompts
+  - Generated 5 unique per-product texture images (replacing shared generic
+    textures): texture-peptide-serum, texture-retinal, texture-recovery-cream,
+    texture-spf, texture-overnight-mask
+  - Updated catalog.ts so each PDP references its own unique texture image
+- All regenerated images verified clean via VLM (0 Chinese text, 0 gibberish)
+- TypeScript: passes with 0 errors (no ignoreBuildErrors)
+- Lint: 0 errors, 0 warnings
+- All routes return 200 OK on deployed site
+
+Verification:
+- Ceramide Recovery Cream PDP (was broken): 9/10, clean, no Chinese text
+- Peptide Recovery Serum PDP (was broken): 9/10, clean, no text artifacts
+- TypeScript: 0 errors (without ignoreBuildErrors)
+- React Strict Mode: enabled
+- .env: removed from git tracking
+- No duplicate close controls in any dialog/drawer
+- All 22 deployed routes return 200 OK
+
+Stage Summary:
+- Live URL: https://hello-aditya-dev.github.io/aurel-commerce/
+- GitHub: https://github.com/hello-aditya-dev/aurel-commerce
+- Production config hardened: no error suppression, strict mode enabled
+- All Chinese text/gibberish eliminated from imagery
+- Unique per-product textures across 5 priority PDPs
+- Repository organized (no root-level screenshots/debris)
