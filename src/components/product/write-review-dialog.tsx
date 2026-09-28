@@ -109,7 +109,7 @@ export function WriteReviewDialog({
 
   return (
     <Dialog open={open} onOpenChange={(o) => { if (!o) reset(); onOpenChange(o); }}>
-      <DialogContent className="max-w-lg p-0 top-[8vh] translate-y-0 gap-0 overflow-hidden bg-background max-h-[88vh]">
+      <DialogContent className="max-w-lg p-0 top-[8vh] translate-y-0 gap-0 overflow-hidden bg-background max-h-[88vh]" showCloseButton={false}>
         <DialogTitle className="sr-only">Write a review for {product.name}</DialogTitle>
         <DialogDescription className="sr-only">
           Submit your review of {product.name}. Select a star rating, write a title and body, and optionally share your skin type and age range.

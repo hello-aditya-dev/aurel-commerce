@@ -53,6 +53,7 @@ export function SearchOverlay() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
         className="max-w-3xl p-0 top-[12vh] translate-y-0 gap-0 overflow-hidden bg-background"
+        showCloseButton={false}
       >
         <DialogTitle className="sr-only">Search AUREL</DialogTitle>
         <DialogDescription className="sr-only">

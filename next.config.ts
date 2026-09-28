@@ -13,10 +13,7 @@ const nextConfig: NextConfig = {
   trailingSlash: isStaticExport,
   // basePath + assetPrefix for GitHub Pages project sites
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  reactStrictMode: false,
+  reactStrictMode: true,
   images: {
     // GitHub Pages static export cannot run the optimization server.
     // For dev/standalone we still allow AVIF/WebP via formats below.

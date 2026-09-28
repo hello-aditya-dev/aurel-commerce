@@ -72,7 +72,7 @@ export function KeyboardHelp() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md p-0 top-[15vh] translate-y-0 gap-0 overflow-hidden bg-background">
+      <DialogContent className="max-w-md p-0 top-[15vh] translate-y-0 gap-0 overflow-hidden bg-background" showCloseButton={false}>
         <DialogTitle className="sr-only">Keyboard shortcuts</DialogTitle>
         <DialogDescription className="sr-only">
           List of keyboard shortcuts available on the AUREL website.

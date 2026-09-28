@@ -209,7 +209,7 @@ function AskQuestionDialog({
 
   return (
     <Dialog open={open} onOpenChange={(o) => { if (!o) reset(); onOpenChange(o); }}>
-      <DialogContent className="max-w-lg p-0 top-[12vh] translate-y-0 gap-0 overflow-hidden bg-background max-h-[88vh]">
+      <DialogContent className="max-w-lg p-0 top-[12vh] translate-y-0 gap-0 overflow-hidden bg-background max-h-[88vh]" showCloseButton={false}>
         <DialogTitle className="sr-only">Ask a question about {product.name}</DialogTitle>
         <DialogDescription className="sr-only">
           Submit a question about {product.name}. Your question will be visible to the community.

@@ -27,7 +27,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aurel.example.com"),
+  metadataBase: new URL("https://hello-aditya-dev.github.io/aurel-commerce"),
   title: {
     default: "AUREL — Clinical Skincare for Stressed Modern Skin",
     template: "%s — AUREL",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aurel.example.com",
+    url: "https://hello-aditya-dev.github.io/aurel-commerce",
     siteName: "AUREL",
     title: "AUREL — Clinical Skincare for Stressed Modern Skin",
     description:

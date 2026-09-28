@@ -63,7 +63,7 @@ See [docs/COMMERCE-ARCHITECTURE.md](docs/COMMERCE-ARCHITECTURE.md) for the full 
 
 ```bash
 # Clone
-git clone https://github.com/your-username/aurel-commerce.git
+git clone https://github.com/hello-aditya-dev/aurel-commerce.git
 cd aurel-commerce
 
 # Install

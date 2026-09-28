@@ -216,7 +216,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b
 ;
 ;
 const metadata = {
-    metadataBase: new URL("https://aurel.example.com"),
+    metadataBase: new URL("https://hello-aditya-dev.github.io/aurel-commerce"),
     title: {
         default: "AUREL — Clinical Skincare for Stressed Modern Skin",
         template: "%s — AUREL"
@@ -246,7 +246,7 @@ const metadata = {
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://aurel.example.com",
+        url: "https://hello-aditya-dev.github.io/aurel-commerce",
         siteName: "AUREL",
         title: "AUREL — Clinical Skincare for Stressed Modern Skin",
         description: "Clinical actives. Botanical intelligence. Skin, restored.",

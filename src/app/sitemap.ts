@@ -4,7 +4,7 @@ import { products, ingredients, collections, journalArticles } from "@/data/cata
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://aurel.example.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://hello-aditya-dev.github.io/aurel-commerce";
   const now = new Date();
 
   const staticPages = [

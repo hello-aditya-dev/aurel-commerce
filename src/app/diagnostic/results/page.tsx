@@ -27,8 +27,8 @@ export default function ResultsPage() {
 
   if (!result) return null;
 
-  const am = result.am.filter((s) => !excluded.has(s)).map(getProductBySlug).filter(Boolean);
-  const pm = result.pm.filter((s) => !excluded.has(s)).map(getProductBySlug).filter(Boolean);
+  const am = result.am.filter((s) => !excluded.has(s)).map(getProductBySlug).filter((p): p is NonNullable<typeof p> => !!p);
+  const pm = result.pm.filter((s) => !excluded.has(s)).map(getProductBySlug).filter((p): p is NonNullable<typeof p> => !!p);
   const allSlugs = Array.from(new Set([...result.am, ...result.pm])).filter(
     (s) => !excluded.has(s)
   );

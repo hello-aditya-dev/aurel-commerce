@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Plus, Minus, X, ArrowRight, ShoppingBag, Check, Share2 } from "lucide-react";
 import { formatPrice, getProductBySlug } from "@/lib/commerce/provider";
 import { track } from "@/lib/analytics";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import type { CartLine } from "@/types/commerce";
 
 export function CartDrawer() {
   const { isOpen, close, lines, remove, updateQty, subtotal } = useCart();
@@ -351,10 +353,8 @@ function EmptyState({ onClose }: { onClose: () => void }) {
 
 function toastCheckout() {
   // Demo only — no real payment
-  import("sonner").then(({ toast }) => {
-    toast("Demo checkout", {
-      description:
-        "AUREL is a concept project. No payment was processed. Wire a Shopify checkout URL to enable real orders.",
-    });
+  toast("Demo checkout", {
+    description:
+      "AUREL is a concept project. No payment was processed. Wire a Shopify checkout URL to enable real orders.",
   });
 }

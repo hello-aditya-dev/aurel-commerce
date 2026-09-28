@@ -1,8 +1,8 @@
-[00:00:00.832] Server  LOG     ✓ Ready in 639ms
-[00:00:03.889] Server  LOG     ○ Compiling / ...
-[00:00:31.579] Server  WARN    ⚠ Cross origin request detected from preview-chat-45314a15-19a8-4b69-93f6-0f2b4a3a512a.space-z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:00.887] Server  LOG     ✓ Ready in 664ms
+[00:00:13.017] Server  LOG     ○ Compiling / ...
+[00:00:20.199] Server  WARN    ⚠ Cross origin request detected from preview-chat-45314a15-19a8-4b69-93f6-0f2b4a3a512a.space-z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:32.443] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:20.377] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -45,48 +45,7 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:01:44.054] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:01:53.265] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <script>
-                      <script>
-                      <script>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en" suppressHydrationWarning={true}>
-                          <body
-                            className="inter_7b064e0d-module__MOT0tq__variable fraunces_956ebe6d-module__50Ac1q__varia..."
--                           data-new-gr-c-s-check-loaded="14.1332.0"
--                           data-gr-ext-installed=""
-                          >
-                  ...
-
-[00:01:53.265] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:12.251] Server  LOG     ✓ Compiled in 258ms
+[00:01:23.312] Server  LOG     ✓ Compiled in 313ms
+[00:01:31.930] Server  LOG     ✓ Compiled in 157ms
+[00:01:59.504] Server  LOG     ✓ Compiled in 119ms
