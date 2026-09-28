@@ -8,4 +8,4 @@
 :HL["/aurel-commerce/images/ingredient-laboratory.png","image"]
 :HL["/aurel-commerce/images/ingredient-botanical.png","image"]
 :HL["/aurel-commerce/images/texture-cream.png","image"]
-0:{"buildId":"rO5rsx64bOMiXk0fjGpza","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"ingredients","paramType":null,"paramKey":"ingredients","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"TYYJ9SvB3E7f6lAqGjcrn","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"ingredients","paramType":null,"paramKey":"ingredients","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

@@ -27,7 +27,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hello-aditya-dev.github.io/aurel-commerce"),
+  // metadataBase is the origin only — Next.js resolves relative image paths
+  // against this. The img() helper adds NEXT_PUBLIC_BASE_PATH for GitHub Pages.
+  metadataBase: new URL("https://hello-aditya-dev.github.io"),
   title: {
     default: "AUREL — Clinical Skincare for Stressed Modern Skin",
     template: "%s — AUREL",
