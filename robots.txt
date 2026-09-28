@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://hello-aditya-dev.github.io/aurel-commerce
+Sitemap: https://hello-aditya-dev.github.io/aurel-commerce/sitemap.xml
