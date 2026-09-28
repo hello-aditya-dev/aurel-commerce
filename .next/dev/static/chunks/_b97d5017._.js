@@ -1,0 +1,18 @@
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/src/lib/commerce/share-cart.ts [app-client] (ecmascript, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.resolve().then(() => {
+        return parentImport("[project]/src/lib/commerce/share-cart.ts [app-client] (ecmascript)");
+    });
+});
+}),
+"[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.resolve().then(() => {
+        return parentImport("[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
+    });
+});
+}),
+]);
