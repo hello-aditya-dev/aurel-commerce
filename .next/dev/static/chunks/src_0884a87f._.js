@@ -3393,12 +3393,12 @@ function SheetOverlay({ className, ...props }) {
     }, this);
 }
 _c4 = SheetOverlay;
-function SheetContent({ className, children, side = "right", ...props }) {
+function SheetContent({ className, children, side = "right", showCloseButton = true, ...props }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SheetPortal, {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SheetOverlay, {}, void 0, false, {
                 fileName: "[project]/src/components/ui/sheet.tsx",
-                lineNumber: 57,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$dialog$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Content"], {
@@ -3407,40 +3407,40 @@ function SheetContent({ className, children, side = "right", ...props }) {
                 ...props,
                 children: [
                     children,
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$dialog$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Close"], {
+                    showCloseButton && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$dialog$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Close"], {
                         className: "ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XIcon$3e$__["XIcon"], {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ui/sheet.tsx",
-                                lineNumber: 76,
-                                columnNumber: 11
+                                lineNumber: 79,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "sr-only",
                                 children: "Close"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ui/sheet.tsx",
-                                lineNumber: 77,
-                                columnNumber: 11
+                                lineNumber: 80,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ui/sheet.tsx",
-                        lineNumber: 75,
-                        columnNumber: 9
+                        lineNumber: 78,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ui/sheet.tsx",
-                lineNumber: 58,
+                lineNumber: 60,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ui/sheet.tsx",
-        lineNumber: 56,
+        lineNumber: 58,
         columnNumber: 5
     }, this);
 }
@@ -3452,7 +3452,7 @@ function SheetHeader({ className, ...props }) {
         ...props
     }, void 0, false, {
         fileName: "[project]/src/components/ui/sheet.tsx",
-        lineNumber: 86,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }
@@ -3464,7 +3464,7 @@ function SheetFooter({ className, ...props }) {
         ...props
     }, void 0, false, {
         fileName: "[project]/src/components/ui/sheet.tsx",
-        lineNumber: 96,
+        lineNumber: 100,
         columnNumber: 5
     }, this);
 }
@@ -3476,7 +3476,7 @@ function SheetTitle({ className, ...props }) {
         ...props
     }, void 0, false, {
         fileName: "[project]/src/components/ui/sheet.tsx",
-        lineNumber: 109,
+        lineNumber: 113,
         columnNumber: 5
     }, this);
 }
@@ -3488,7 +3488,7 @@ function SheetDescription({ className, ...props }) {
         ...props
     }, void 0, false, {
         fileName: "[project]/src/components/ui/sheet.tsx",
-        lineNumber: 122,
+        lineNumber: 126,
         columnNumber: 5
     }, this);
 }
@@ -3630,6 +3630,7 @@ function CartDrawer() {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetContent"], {
             side: "right",
             className: "w-full sm:max-w-md p-0 flex flex-col gap-0 bg-background",
+            showCloseButton: false,
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetHeader"], {
                     className: "px-6 pt-6 pb-4 border-b border-border",
@@ -3650,13 +3651,13 @@ function CartDrawer() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                        lineNumber: 38,
+                                        lineNumber: 39,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 36,
+                                lineNumber: 37,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetDescription"], {
@@ -3668,7 +3669,7 @@ function CartDrawer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 42,
+                                lineNumber: 43,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3679,30 +3680,30 @@ function CartDrawer() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 50,
+                                    lineNumber: 51,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 35,
+                        lineNumber: 36,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 34,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, this),
                 hasHydrated && lines.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(EmptyState, {
                     onClose: close1
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 56,
+                    lineNumber: 57,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
@@ -3719,7 +3720,7 @@ function CartDrawer() {
                                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$commerce$2f$provider$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["formatPrice"])(remaining)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                                lineNumber: 64,
+                                                lineNumber: 65,
                                                 columnNumber: 28
                                             }, this),
                                             " away from complimentary shipping."
@@ -3729,7 +3730,7 @@ function CartDrawer() {
                                     }, void 0, false)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 61,
+                                    lineNumber: 62,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3753,18 +3754,18 @@ function CartDrawer() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 72,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 71,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                            lineNumber: 60,
+                            lineNumber: 61,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3783,12 +3784,12 @@ function CartDrawer() {
                                             onQty: (q)=>updateQty(line.id, q)
                                         }, line.id, false, {
                                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 85,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 83,
                                     columnNumber: 15
                                 }, this),
                                 upsellProduct && !inCartSlugs.has(upsellProduct.slug) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(UpsellRow, {
@@ -3804,13 +3805,13 @@ function CartDrawer() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 98,
+                                    lineNumber: 99,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                            lineNumber: 81,
+                            lineNumber: 82,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3824,7 +3825,7 @@ function CartDrawer() {
                                             children: "Subtotal"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                            lineNumber: 113,
+                                            lineNumber: 114,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3832,13 +3833,13 @@ function CartDrawer() {
                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$commerce$2f$provider$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["formatPrice"])(sub)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                            lineNumber: 114,
+                                            lineNumber: 115,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 112,
+                                    lineNumber: 113,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3846,7 +3847,7 @@ function CartDrawer() {
                                     children: "Shipping and taxes calculated at checkout. Demo checkout will not collect payment."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 117,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3865,14 +3866,14 @@ function CartDrawer() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 119,
+                                    lineNumber: 120,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ShareCartButton, {
                                     lines: lines
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 130,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -3882,13 +3883,13 @@ function CartDrawer() {
                                     children: "Continue shopping"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 131,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                            lineNumber: 111,
+                            lineNumber: 112,
                             columnNumber: 13
                         }, this)
                     ]
@@ -3953,7 +3954,7 @@ function ShareCartButton({ lines }) {
                     className: "h-3.5 w-3.5"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 182,
+                    lineNumber: 183,
                     columnNumber: 11
                 }, this),
                 "Link copied"
@@ -3964,7 +3965,7 @@ function ShareCartButton({ lines }) {
                     className: "h-3.5 w-3.5"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 187,
+                    lineNumber: 188,
                     columnNumber: 11
                 }, this),
                 "Share cart"
@@ -3972,7 +3973,7 @@ function ShareCartButton({ lines }) {
         }, void 0, true)
     }, void 0, false, {
         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-        lineNumber: 176,
+        lineNumber: 177,
         columnNumber: 5
     }, this);
 }
@@ -3991,12 +3992,12 @@ function CartLineRow({ line, onRemove, onQty }) {
                     className: "absolute inset-0 h-full w-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 210,
+                    lineNumber: 211,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 206,
+                lineNumber: 207,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4014,7 +4015,7 @@ function CartLineRow({ line, onRemove, onQty }) {
                                         children: line.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 216,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4022,7 +4023,7 @@ function CartLineRow({ line, onRemove, onQty }) {
                                         children: line.size
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 222,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4030,13 +4031,13 @@ function CartLineRow({ line, onRemove, onQty }) {
                                         children: line.variant === "subscription" ? "Subscription · save 15%" : "One-time purchase"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                        lineNumber: 222,
+                                        lineNumber: 223,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 214,
+                                lineNumber: 215,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4047,18 +4048,18 @@ function CartLineRow({ line, onRemove, onQty }) {
                                     className: "h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 226,
+                                lineNumber: 227,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 213,
+                        lineNumber: 214,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4070,7 +4071,7 @@ function CartLineRow({ line, onRemove, onQty }) {
                                 min: 1
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 235,
+                                lineNumber: 236,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4078,25 +4079,25 @@ function CartLineRow({ line, onRemove, onQty }) {
                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$commerce$2f$provider$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["formatPrice"])(line.price * line.quantity)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 240,
+                                lineNumber: 241,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 234,
+                        lineNumber: 235,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 212,
+                lineNumber: 213,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-        lineNumber: 205,
+        lineNumber: 206,
         columnNumber: 5
     }, this);
 }
@@ -4114,12 +4115,12 @@ function QtyStepper({ value, onChange, min = 1, max = 99 }) {
                     className: "h-3 w-3"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 266,
+                    lineNumber: 267,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 260,
+                lineNumber: 261,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4127,7 +4128,7 @@ function QtyStepper({ value, onChange, min = 1, max = 99 }) {
                 children: value
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 268,
+                lineNumber: 269,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4139,18 +4140,18 @@ function QtyStepper({ value, onChange, min = 1, max = 99 }) {
                     className: "h-3 w-3"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 275,
+                    lineNumber: 276,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 269,
+                lineNumber: 270,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-        lineNumber: 259,
+        lineNumber: 260,
         columnNumber: 5
     }, this);
 }
@@ -4166,7 +4167,7 @@ function UpsellRow({ name, price, image, onAdd }) {
                 children: "Complete your routine"
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 295,
+                lineNumber: 296,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4180,12 +4181,12 @@ function UpsellRow({ name, price, image, onAdd }) {
                             className: "absolute inset-0 h-full w-full object-cover"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                            lineNumber: 298,
+                            lineNumber: 299,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 297,
+                        lineNumber: 298,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4196,7 +4197,7 @@ function UpsellRow({ name, price, image, onAdd }) {
                                 children: name
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 301,
+                                lineNumber: 302,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4207,13 +4208,13 @@ function UpsellRow({ name, price, image, onAdd }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                                lineNumber: 302,
+                                lineNumber: 303,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 300,
+                        lineNumber: 301,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4226,19 +4227,19 @@ function UpsellRow({ name, price, image, onAdd }) {
                         children: added ? "Added" : "Add"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 304,
+                        lineNumber: 305,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 296,
+                lineNumber: 297,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-        lineNumber: 294,
+        lineNumber: 295,
         columnNumber: 5
     }, this);
 }
@@ -4254,12 +4255,12 @@ function EmptyState({ onClose }) {
                     className: "h-5 w-5 text-muted-foreground"
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                    lineNumber: 328,
+                    lineNumber: 329,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 327,
+                lineNumber: 328,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4267,7 +4268,7 @@ function EmptyState({ onClose }) {
                 children: "Your bag is empty"
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 330,
+                lineNumber: 331,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4275,7 +4276,7 @@ function EmptyState({ onClose }) {
                 children: "AUREL routines are designed as coherent systems. Start with the diagnostic, or browse the catalogue."
             }, void 0, false, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 331,
+                lineNumber: 332,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4288,7 +4289,7 @@ function EmptyState({ onClose }) {
                         children: "Take the diagnostic"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 335,
+                        lineNumber: 336,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4298,19 +4299,19 @@ function EmptyState({ onClose }) {
                         children: "Shop all"
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                        lineNumber: 342,
+                        lineNumber: 343,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/cart-drawer.tsx",
-                lineNumber: 334,
+                lineNumber: 335,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/layout/cart-drawer.tsx",
-        lineNumber: 326,
+        lineNumber: 327,
         columnNumber: 5
     }, this);
 }

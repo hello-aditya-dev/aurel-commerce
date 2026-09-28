@@ -24,6 +24,20 @@ export const metadata: Metadata = {
     description:
       "A complete ecommerce experience designed and engineered by Aditya.",
     type: "article",
+    images: [
+      {
+        url: img("/images/og-case-study.jpg"),
+        width: 1200,
+        height: 630,
+        alt: "AUREL — Premium DTC Commerce Concept. Design + Ecommerce UX + Frontend Engineering.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AUREL — Premium DTC Commerce Concept",
+    description: "A complete ecommerce experience designed and engineered by Aditya.",
+    images: [img("/images/og-case-study.jpg")],
   },
 };
 

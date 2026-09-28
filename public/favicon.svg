@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" fill="#0e0d0b"/>
-  <text x="32" y="40" font-family="Georgia, serif" font-size="28" letter-spacing="2" fill="#f4f0e8" text-anchor="middle" font-weight="500">A</text>
+  <!-- AUREL favicon — monogram on dark background -->
+  <rect width="64" height="64" rx="12" fill="#1a1815"/>
+  <!-- Geometric 'A' in bone -->
+  <path d="M32 14 L48 48 L40 48 L32 30 L24 48 L16 48 Z" fill="#f4f0e8"/>
+  <rect x="24" y="38" width="16" height="3.5" rx="1" fill="#f4f0e8"/>
 </svg>

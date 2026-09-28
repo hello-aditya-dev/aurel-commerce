@@ -51,6 +51,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  manifest: img("/manifest.json"),
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -61,9 +62,9 @@ export const metadata: Metadata = {
       "Clinical actives. Botanical intelligence. Skin, restored.",
     images: [
       {
-        url: img("/images/og-card.png"),
-        width: 1344,
-        height: 768,
+        url: img("/images/og-default.jpg"),
+        width: 1200,
+        height: 630,
         alt: "AUREL — Clinical skincare for stressed modern skin",
       },
     ],
@@ -73,13 +74,15 @@ export const metadata: Metadata = {
     title: "AUREL — Clinical Skincare for Stressed Modern Skin",
     description:
       "Clinical actives. Botanical intelligence. Skin, restored.",
-    images: [img("/images/og-card.png")],
+    images: [img("/images/og-default.jpg")],
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: img("/favicon.svg"), type: "image/svg+xml" },
+      { url: img("/icon-192.png"), sizes: "192x192", type: "image/png" },
+      { url: img("/icon-512.png"), sizes: "512x512", type: "image/png" },
     ],
-    apple: "/favicon.svg",
+    apple: [{ url: img("/apple-touch-icon.png"), sizes: "180x180", type: "image/png" }],
   },
   robots: {
     index: true,

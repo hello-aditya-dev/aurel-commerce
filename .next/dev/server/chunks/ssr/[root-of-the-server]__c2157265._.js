@@ -243,6 +243,7 @@ const metadata = {
     alternates: {
         canonical: "/"
     },
+    manifest: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/manifest.json"),
     openGraph: {
         type: "website",
         locale: "en_US",
@@ -252,9 +253,9 @@ const metadata = {
         description: "Clinical actives. Botanical intelligence. Skin, restored.",
         images: [
             {
-                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/images/og-card.png"),
-                width: 1344,
-                height: 768,
+                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/images/og-default.jpg"),
+                width: 1200,
+                height: 630,
                 alt: "AUREL — Clinical skincare for stressed modern skin"
             }
         ]
@@ -264,17 +265,33 @@ const metadata = {
         title: "AUREL — Clinical Skincare for Stressed Modern Skin",
         description: "Clinical actives. Botanical intelligence. Skin, restored.",
         images: [
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/images/og-card.png")
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/images/og-default.jpg")
         ]
     },
     icons: {
         icon: [
             {
-                url: "/favicon.svg",
+                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/favicon.svg"),
                 type: "image/svg+xml"
+            },
+            {
+                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/icon-192.png"),
+                sizes: "192x192",
+                type: "image/png"
+            },
+            {
+                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/icon-512.png"),
+                sizes: "512x512",
+                type: "image/png"
             }
         ],
-        apple: "/favicon.svg"
+        apple: [
+            {
+                url: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["img"])("/apple-touch-icon.png"),
+                sizes: "180x180",
+                type: "image/png"
+            }
+        ]
     },
     robots: {
         index: true,
@@ -305,7 +322,7 @@ function RootLayout({ children }) {
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/src/app/layout.tsx",
-                    lineNumber: 119,
+                    lineNumber: 122,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sonner$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Toaster"], {
@@ -315,18 +332,18 @@ function RootLayout({ children }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/layout.tsx",
-                    lineNumber: 120,
+                    lineNumber: 123,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/layout.tsx",
-            lineNumber: 111,
+            lineNumber: 114,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.tsx",
-        lineNumber: 110,
+        lineNumber: 113,
         columnNumber: 5
     }, this);
 }

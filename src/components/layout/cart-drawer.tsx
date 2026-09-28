@@ -30,6 +30,7 @@ export function CartDrawer() {
       <SheetContent
         side="right"
         className="w-full sm:max-w-md p-0 flex flex-col gap-0 bg-background"
+        showCloseButton={false}
       >
         <SheetHeader className="px-6 pt-6 pb-4 border-b border-border">
           <div className="flex items-center justify-between">

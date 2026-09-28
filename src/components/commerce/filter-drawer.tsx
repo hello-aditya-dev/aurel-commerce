@@ -57,7 +57,7 @@ export function FilterDrawer({
 }) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" className="h-[85vh] p-0 flex flex-col rounded-t-xl">
+      <SheetContent side="bottom" className="h-[85vh] p-0 flex flex-col rounded-t-xl" showCloseButton={false}>
         <SheetHeader className="px-6 pt-5 pb-4 border-b border-border flex flex-row items-center justify-between">
           <SheetTitle className="font-serif text-xl">Filter</SheetTitle>
           <SheetDescription className="sr-only">
