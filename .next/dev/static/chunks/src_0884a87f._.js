@@ -859,8 +859,8 @@ const products = [
                 kind: "packshot"
             },
             {
-                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-serum-droplet.png"),
-                alt: "Serum droplet at the tip of the glass dropper",
+                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-peptide-serum.png"),
+                alt: "Peptide Recovery Serum texture — weightless and fast-absorbing",
                 kind: "texture"
             },
             {
@@ -969,8 +969,8 @@ const products = [
                 kind: "packshot"
             },
             {
-                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-serum-droplet.png"),
-                alt: "Retinal serum droplet",
+                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-retinal.png"),
+                alt: "Retinal Renewal 0.1 texture — amber lightweight serum",
                 kind: "texture"
             },
             {
@@ -1067,8 +1067,8 @@ const products = [
                 kind: "packshot"
             },
             {
-                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-cream.png"),
-                alt: "Cream texture swirled on glass",
+                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-recovery-cream.png"),
+                alt: "Ceramide Recovery Cream texture — rich cushioning cream",
                 kind: "texture"
             },
             {
@@ -1164,8 +1164,8 @@ const products = [
                 kind: "packshot"
             },
             {
-                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-gel.png"),
-                alt: "SPF texture on glass",
+                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-spf.png"),
+                alt: "Daily Mineral SPF 50 texture — lightweight fluid-cream",
                 kind: "texture"
             },
             {
@@ -1260,8 +1260,8 @@ const products = [
                 kind: "packshot"
             },
             {
-                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-cream.png"),
-                alt: "Mask texture",
+                src: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$img$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["img"])("/images/texture-overnight-mask.png"),
+                alt: "Overnight Barrier Mask texture — cushioning occlusive",
                 kind: "texture"
             },
             {

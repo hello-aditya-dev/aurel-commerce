@@ -49,3 +49,6 @@ It can also happen if the client has a browser extension installed which messes 
 [00:01:23.312] Server  LOG     ✓ Compiled in 313ms
 [00:01:31.930] Server  LOG     ✓ Compiled in 157ms
 [00:01:59.504] Server  LOG     ✓ Compiled in 119ms
+[00:07:00.636] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:11:37.260] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:14:30.797] Server  LOG     ✓ Compiled in 158ms

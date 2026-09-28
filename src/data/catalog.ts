@@ -501,7 +501,7 @@ export const products: Product[] = [
     reviewCount: 428,
     media: [
       { src: img("/images/product-peptide-serum.png"), alt: "Peptide Recovery Serum in frosted glass dropper bottle", kind: "packshot" },
-      { src: img("/images/texture-serum-droplet.png"), alt: "Serum droplet at the tip of the glass dropper", kind: "texture" },
+      { src: img("/images/texture-peptide-serum.png"), alt: "Peptide Recovery Serum texture — weightless and fast-absorbing", kind: "texture" },
       { src: img("/images/editorial-routine.png"), alt: "Serum within a calm bathroom routine", kind: "lifestyle" },
       { src: img("/images/product-system.png"), alt: "Peptide Recovery Serum within the AUREL system", kind: "environment" },
     ],
@@ -555,7 +555,7 @@ export const products: Product[] = [
     reviewCount: 319,
     media: [
       { src: img("/images/product-retinal.png"), alt: "Retinal Renewal 0.1 in dark amber dropper bottle", kind: "packshot" },
-      { src: img("/images/texture-serum-droplet.png"), alt: "Retinal serum droplet", kind: "texture" },
+      { src: img("/images/texture-retinal.png"), alt: "Retinal Renewal 0.1 texture — amber lightweight serum", kind: "texture" },
       { src: img("/images/editorial-stone.png"), alt: "Retinal bottle on raw stone", kind: "environment" },
     ],
     subscriptionEligible: true,
@@ -604,7 +604,7 @@ export const products: Product[] = [
     reviewCount: 514,
     media: [
       { src: img("/images/product-recovery-cream.png"), alt: "Ceramide Recovery Cream in frosted glass jar", kind: "packshot" },
-      { src: img("/images/texture-cream.png"), alt: "Cream texture swirled on glass", kind: "texture" },
+      { src: img("/images/texture-recovery-cream.png"), alt: "Ceramide Recovery Cream texture — rich cushioning cream", kind: "texture" },
       { src: img("/images/editorial-routine.png"), alt: "Cream in a bathroom routine moment", kind: "lifestyle" },
     ],
     subscriptionEligible: true,
@@ -653,7 +653,7 @@ export const products: Product[] = [
     reviewCount: 372,
     media: [
       { src: img("/images/product-spf.png"), alt: "Daily Mineral SPF 50 in frosted squeeze tube", kind: "packshot" },
-      { src: img("/images/texture-gel.png"), alt: "SPF texture on glass", kind: "texture" },
+      { src: img("/images/texture-spf.png"), alt: "Daily Mineral SPF 50 texture — lightweight fluid-cream", kind: "texture" },
       { src: img("/images/editorial-routine.png"), alt: "SPF in a calm bathroom routine", kind: "lifestyle" },
     ],
     subscriptionEligible: true,
@@ -702,7 +702,7 @@ export const products: Product[] = [
     reviewCount: 198,
     media: [
       { src: img("/images/product-overnight-mask.png"), alt: "Overnight Barrier Mask in frosted glass jar", kind: "packshot" },
-      { src: img("/images/texture-cream.png"), alt: "Mask texture", kind: "texture" },
+      { src: img("/images/texture-overnight-mask.png"), alt: "Overnight Barrier Mask texture — cushioning occlusive", kind: "texture" },
       { src: img("/images/editorial-stone.png"), alt: "Mask jar on stone", kind: "environment" },
     ],
     subscriptionEligible: true,
