@@ -1,2 +1,54 @@
-skills/
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+build/
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# Environment — NEVER commit real secrets.
+# .env.example is the only env file that should be tracked.
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+dev.log
+server.log
+.watchdog.log
+
+# Databases (local dev only)
+db/*.db
+db/*.db-journal
+db/*.sqlite
+db/*.sqlite-journal
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+
+# Sandbox / tooling
+skills/
+.zscripts/
+.dev-watchdog.sh
+
+# Prisma generated client (regenerated on install)
+prisma/generated/
+
+# Misc
+.cache/
+.turbo/
+tool-results/
