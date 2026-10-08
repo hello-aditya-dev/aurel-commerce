@@ -1,0 +1,7 @@
+:HL["/aurel-commerce/_next/static/chunks/fb690ef99b73496a.css","style"]
+:HL["/aurel-commerce/_next/static/chunks/d0cf0784c53a0b33.css","style"]
+:HL["/aurel-commerce/_next/static/media/54fc36028e2bb174-s.p.a3b6b797.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/aurel-commerce/_next/static/media/66b33cc02d8f8b9d-s.p.be4602c5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/aurel-commerce/_next/static/media/70bc3e132a0a741e-s.p.15008bfb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/aurel-commerce/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"buildId":"yEQ7Pww3VL9SUa6CrcTQg","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"contact","paramType":null,"paramKey":"contact","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
